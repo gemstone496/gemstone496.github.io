@@ -28,11 +28,8 @@ a:hover {
 
 /* Style the header */
 header {
-  background-color: #666;
   padding: 30px;
   text-align: center;
-  font-size: 35px;
-  color: white;
 }
 
 /* Container for flexboxes */
@@ -65,6 +62,11 @@ nav {
   flex: 1;
   background: #ccc;
   padding: 20px;
+}
+
+.admin {
+  font-weight: bolder;
+  padding-left: 5%;
 }
 
 /* Style the list inside the menu */
