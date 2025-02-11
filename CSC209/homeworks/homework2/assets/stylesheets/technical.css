@@ -3,6 +3,7 @@ table {
   border-collapse: collapse;
   padding: 1px;
   text-align: center;
+  width: 100%;
   th {
     background-color: yellow; /* awful color choice T-T */
     border: 1px solid black;
@@ -14,6 +15,10 @@ table {
     border-collapse: collapse;
     padding: 1px 4px;
   }
+}
+
+.tbl-topic {
+  max-width: 50%;
 }
 
 .dark-mode {
