@@ -6,6 +6,59 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* Style the header */
+header {
+  padding: 30px;
+  text-align: center;
+}
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+/* Style the footer */
+footer {
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+  color: black;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #eee;
+  padding: 20px;
+}
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Used for nav bar list items */
+li {
+  padding-left: 10pt;
+}
+li.admin {
+  font-weight: bolder;
+  padding-left: 10%;
+}
+
 a:link {
   color: #335eb9;
   background-color: transparent;
@@ -22,59 +75,25 @@ a:hover {
   text-decoration: underline;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-/* Style the header */
-header {
-  padding: 30px;
+.button {
+  background-color: #5f2020;
+  color: #e0a5a5;
+  border: none;
+  border-radius: 7px;
+  padding: 16px 32px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
-
-/* Container for flexboxes */
-section {
-  display: -webkit-flex;
-  display: flex;
+.button:hover {
+  background-color: #e0a5a5;
+  color: #5f2020;
+  border: 2px solid #5f2020;
 }
-
-/* Style the content */
-article {
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3;
-  background-color: #f1f1f1;
-  padding: 10px;
-}
-
-/* Style the footer */
-footer {
-  background-color: #777;
-  padding: 10px;
-  text-align: center;
-  color: white;
-}
-
-/* Style the navigation menu */
-nav {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background: #ccc;
-  padding: 20px;
-}
-
-.admin {
-  font-weight: bolder;
-  padding-left: 5%;
-}
-
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
 
 /* Dark mode (light mode?)!! */
 .dark-mode {
@@ -100,6 +119,22 @@ nav ul {
     background-color: #303033;
     color: white;
   }
+  footer {
+    background-color: #202022;
+    color: white;
+  }
+  article {
+    background-color: #28282b;
+  }
+  .button {
+  background-color: #e0a5a5;
+  color: #310c0c;
+}
+.button:hover {
+  background-color: #b56e6e;
+  color: #310c0c;
+  border: 2px solid #b56e6e;
+}
 }
 
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
