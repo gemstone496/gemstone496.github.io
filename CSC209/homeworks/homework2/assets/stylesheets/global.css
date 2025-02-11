@@ -80,14 +80,14 @@ a:hover {
   color: #e0a5a5;
   border: none;
   border-radius: 7px;
+  margin: 4px 2px;
   padding: 16px 32px;
+  cursor: pointer;
+  display: inline-block;
+  font: 20px bold;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
+  transition-duration: 0.25s;
 }
 .button:hover {
   background-color: #e0a5a5;
