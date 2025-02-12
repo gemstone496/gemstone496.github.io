@@ -41,7 +41,7 @@ nav {
   -ms-flex: 1;
   flex: 1;
   background: #eee;
-  padding: 0px;
+  padding: 10px;
   max-width: fit-content;
 }
 
