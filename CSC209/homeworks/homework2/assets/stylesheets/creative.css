@@ -25,6 +25,11 @@ nav {
   max-width: fit-content;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 .script {
   font-family: Gabriola;
   font-weight: bold;
@@ -35,7 +40,8 @@ nav {
   background-color: #e0a5a5;
   color: #310c0c;
   border-radius: 15px;
-  padding: 5px 50px
+  padding: 5px 50px;
+  max-width: 1000px;
 }
 #head {
   background-color: #e0a5a5;
@@ -63,6 +69,10 @@ nav {
 } .btn-gp .nav-button:not(:last-child) {
   border-bottom: none;
 }
+.disabled {
+  opacity: 40%;
+  cursor: not-allowed;
+}
 
 /* Dark mode (light mode?)!! */
 .dark-mode {
@@ -88,7 +98,7 @@ nav {
     color: #e0a5a5;
   }
   #head {
-    background-color: #310c0c;
+    background-color: #26174d;
     color: #e0a5a5;
   }
 }
