@@ -86,7 +86,7 @@ a:hover {
   text-align: center;
   text-decoration: none;
   transition-duration: 0.15s;
-  min-width: 90px;
+  min-width: 125px;
 } .button:hover {
   background-color: #e0a5a5;
   color: #5f2020;

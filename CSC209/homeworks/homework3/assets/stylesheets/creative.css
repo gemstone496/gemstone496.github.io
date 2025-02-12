@@ -1,0 +1,104 @@
+/* Styles unique to Creative page */
+
+body {
+  background-color:aliceblue;
+  color: #310c0c;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the content */
+article {
+  background-color: aliceblue;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  padding: 10px;
+}
+
+/* Style the navigation menu */
+nav {
+  background-color: #e4d288;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0px;
+  max-width: fit-content;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.script {
+  font-family: Gabriola;
+  font-weight: bold;
+} span.script {
+  font-size: 18px;
+}
+.page-content {
+  background-color: #e0a5a5;
+  color: #310c0c;
+  border-radius: 15px;
+  padding: 5px 50px;
+  max-width: 1000px;
+}
+#head {
+  background-color: #e0a5a5;
+  color: #310c0c;
+  font-size: larger;
+  border-radius: 15;
+}
+
+/* Nav button styling*/
+.nav-button {
+  background-color: #e4d288;
+  color: #26174d;
+  border: none;
+  cursor: pointer;
+  display: block;
+  font: 24px bold;
+  font-family: Impact, Arial, sans-serif;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.15s;
+  width: 100%
+} .nav-button:hover {
+  background-color: #b7a55f;
+} .btn-gp .nav-button:not(:last-child) {
+  border-bottom: none;
+}
+.disabled {
+  opacity: 40%;
+  cursor: not-allowed;
+}
+
+/* Dark mode (light mode?)!! */
+.dark-mode {
+  background-color: #3f2976;
+  color: #e4d288;
+  nav {
+    background-color: #3f2976;
+  }
+  footer {
+    background-color: #1d172d;
+  }
+  article {
+    background-color: #3f2976;
+  }
+  .nav-button {
+    background-color: #3f2976;
+    color: #e4d288;
+  } .nav-button:hover {
+    background-color: #331f66;
+  }
+  .page-content {
+    background-color: #26174d;
+    color: #e0a5a5;
+  }
+  #head {
+    background-color: #26174d;
+    color: #e0a5a5;
+  }
+}
