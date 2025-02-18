@@ -61,17 +61,14 @@ li.admin {
 
 a:link {
   color: #335eb9;
-  background-color: transparent;
   text-decoration: none;
 }
 a:visited {
   color: #1c3f8a;
-  background-color: transparent;
   text-decoration: none;
 }
 a:hover {
   color: #5f2020;
-  background-color: transparent;
   text-decoration: underline;
 }
 

@@ -4,8 +4,10 @@
   <title>CSC 209</title>
   <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
   <link rel="stylesheet" href="./assets/stylesheets/global.css">
+  <link rel="stylesheet" href="./assets/stylesheets/dark_mode.css">
   <link rel="stylesheet" href="./assets/stylesheets/technical.css">
   <script src="./assets/javascript/buttons.js"></script>
+  <script src="./assets/javascript/technical.js"></script>
 </head>
 <body class="dark-mode">
 
@@ -39,36 +41,15 @@
         <div id="description" class="hidden"></div></p>
     </header>
 
-    <div id="slideshow-container" class="slideshow-container">
+    <section>
+      <article style="max-width:fit-content;">
+        <div id="slideshow-container" class="slideshow-container" data-slide-count="8"> </div><br>
+      </article>
 
-    <div id="img-1" class="slide fade">
-      <div class="numbertext">1 / 3</div>
-      <img src="assets/images/bonfire/img-1.png" style="width:100%">
-      <div class="text">Bonfire</div>
-    </div>
-
-    <div id="img-2" class="slide fade">
-      <div class="numbertext">2 / 3</div>
-      <img src="assets/images/bonfire/img-2.png" style="width:100%">
-      <div class="text">Page 1</div>
-    </div>
-
-    <div id="img-3" class="slide fade">
-      <div class="numbertext">3 / 3</div>
-      <img src="assets/images/bonfire/img-3.png" style="width:100%">
-      <div class="text">Page 2</div>
-    </div>
-
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
-
-    </div><br>
-
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span> 
-      <span class="dot" onclick="currentSlide(2)"></span> 
-      <span class="dot" onclick="currentSlide(3)"></span> 
-    </div>
+      <article style="max-width:20px;">
+        <div id="dots" style="text-align:center"></div>
+      </article>
+    </section><br>
 
     <table id="schedule">
       <tr>
@@ -109,4 +90,5 @@
   <h3><a href="./start_page.html">Return to home</a></h3>
 </footer>
 
+<script>slideInit()</script>
 </body></html>

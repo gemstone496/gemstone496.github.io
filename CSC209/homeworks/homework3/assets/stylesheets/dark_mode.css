@@ -5,15 +5,12 @@
 
   a:link {
     color: #b1caff;
-    background-color: transparent;
     text-decoration: none;
   } a:visited {
     color: #9ebaf8;
-    background-color: transparent;
     text-decoration: none;
   } a:hover {
     color: #e0a5a5;
-    background-color: transparent;
     text-decoration: underline;
   }
   nav {

@@ -1,12 +1,42 @@
-const htmlStub = 
-  '<div id="img-NUM" class="slide fade"> \
-    <div class="numbertext">NUM / LEN</div> \
-    <img src="assets/images/bonfire/img-NUM.png" style="width:100%"> \
-    <div class="text">Page NUM</div> \
-  </div>';
+const slideStub = 
+  `<div id="img-NUM" class="slide fade">
+    <div class="numbertext">NUM / LEN</div>
+    <img src="assets/images/bonfire/img-NUM.png" style="max-height:400px">
+    <div class="text">Page NUM</div>
+  </div>`;
+const buttons = 
+  `<a class="prev" onclick="plusSlides(-1)"><</a>
+  <a class="next" onclick="plusSlides(1)">></a>`
+const dotStub =
+  `<span class="dot" onclick="currentSlide(NUM)"></span><br>`
+var slideIndex;
 
 function slideInit() {
-  let slideIndex = 1;
+  console.log("Init Call!")
+  slideContainer = document.getElementById("slideshow-container")
+  let slideCount = slideContainer.dataset.slideCount;
+
+  // parse slide html
+  let slideInsertion = "";
+  for (let i = 1; i <= slideCount; i++) {
+    slideInsertion += slideStub.replaceAll("NUM", i).replaceAll("LEN", slideCount);
+  }
+  slideInsertion += buttons;
+  slideContainer.innerHTML = slideInsertion;
+  console.log("Slides finalized.")
+
+  // parse dot html
+  let dotInsertion = "";
+  slideCount = slideContainer.dataset.slideCount;
+  for (let i = 1; i <= slideCount; i++) {
+    console.log(`Round ${i}, ${slideCount}`)
+    dotInsertion += dotStub.replaceAll("NUM", i);
+  }
+  document.getElementById("dots").innerHTML = dotInsertion;
+  console.log("Dots inserted.")
+
+  // start at slide 1
+  slideIndex = 1;
   showSlides(slideIndex);
 }
 
