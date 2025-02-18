@@ -29,7 +29,7 @@ function slideInit() {
   let dotInsertion = "";
   slideCount = slideContainer.dataset.slideCount;
   for (let i = 1; i <= slideCount; i++) {
-    console.log(`Round ${i}, ${slideCount}`)
+    console.log(`Round ${i}/${slideCount}`)
     dotInsertion += dotStub.replaceAll("NUM", i);
   }
   document.getElementById("dots").innerHTML = dotInsertion;
@@ -62,4 +62,19 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+}
+
+const message = 
+  `This class covers basic topics in web development with a focus on programming.
+  <br>Topics include HTML, CSS, JavaScript, and PHP.`;
+function describeClass() {
+  let description = document.getElementById("description");
+  let hidden = description.classList.toggle("hidden");
+  if (hidden) {
+    description.innerHTML = "";
+    document.getElementById("read-me").innerHTML = "Show more";
+  } else {
+    description.innerHTML = message;
+    document.getElementById("read-me").innerHTML = "Show less";
+  }
 }
