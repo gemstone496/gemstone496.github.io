@@ -121,6 +121,11 @@ img {vertical-align: middle;}
       border-color: white;
     }
   }
+  
+  .prev:hover, .next:hover {
+    color: #e0a5a5;
+    background-color: #404040aa;
+  }
 }
 
 @keyframes fade {
