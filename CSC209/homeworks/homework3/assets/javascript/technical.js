@@ -12,7 +12,7 @@ const dotStub =
 var slideIndex;
 
 function slideInit() {
-  console.log("Init Call!")
+  console.log("Initializer!")
   slideContainer = document.getElementById("slideshow-container")
   let slideCount = slideContainer.dataset.slideCount;
 

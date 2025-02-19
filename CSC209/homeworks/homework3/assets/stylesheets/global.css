@@ -90,6 +90,17 @@ a:hover {
   border: 2px solid #5f2020;
 }
 
+/* Menu dropdown styling */
+.hideable {
+  .hidden {
+    display: none;
+  }
+} .showable {
+  .hidden {
+    display: block;
+  }
+}
+
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
 @media (max-width: 600px) {
   section {

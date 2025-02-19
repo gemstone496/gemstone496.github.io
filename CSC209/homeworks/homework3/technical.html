@@ -6,23 +6,27 @@
   <link rel="stylesheet" href="./assets/stylesheets/global.css">
   <link rel="stylesheet" href="./assets/stylesheets/dark_mode.css">
   <link rel="stylesheet" href="./assets/stylesheets/technical.css">
-  <script src="./assets/javascript/buttons.js"></script>
-  <script src="./assets/javascript/technical.js"></script>
 </head>
 <body  class="dark-mode">
 
 <section>
-  <nav id="nav" class="dropdown">
+  <nav id="nav" class="hideable">
     <ul>
       <li class="admin"><a href="#">CSC 209</a></li>
       <li class="admin">Spring 2025</li>
       <li class="admin"><a href="mailto:fake-email@fake.email">Jade Lilian</a></li>
       <li><br><hr></li>
-      <li><a href="#head">Home</a></li>
-      <li><a href="#schedule">Schedule</a></li>
-      <li><a href="https://moodle.smith.edu/mod/page/view.php?id=1267610">Syllabus</a></li>
-      <li><a href="https://moodle.smith.edu/mod/page/view.php?id=1267611">Requirements</a></li>
-      <li><a href="http://opendatastructures.org/ods-java/">Textbook</a></li>
+      <li><button id="menu-button" class="button" onclick="openMenu()">Menu</button></li>
+      <li class="hidden"><hr></li>
+      <li class="hidden"><a href="#head">Home</a></li>
+      <li class="hidden"><hr></li>
+      <li class="hidden"><a href="#schedule">Schedule</a></li>
+      <li class="hidden"><hr></li>
+      <li class="hidden"><a href="https://moodle.smith.edu/mod/page/view.php?id=1267610">Syllabus</a></li>
+      <li class="hidden"><hr></li>
+      <li class="hidden"><a href="https://moodle.smith.edu/mod/page/view.php?id=1267611">Requirements</a></li>
+      <li class="hidden"><hr></li>
+      <li class="hidden"><a href="http://opendatastructures.org/ods-java/">Textbook</a></li>
       <li><hr></li>
       <li><a href="https://moodle.smith.edu/mod/wiki/view.php?id=1267981">HowTo</a></li>
       <li><a href="https://www.w3schools.com/html/default.asp">Resources</a></li>
@@ -86,9 +90,12 @@
 <footer>
   <hr>
   <div>Technical: 210 minutes</div>
+  <div>Creative: 135 minutes</div>
   <hr>
   <h3><a href="./start_page.html">Return to home</a></h3>
 </footer>
 
+<script src="./assets/javascript/buttons.js"></script>
+<script src="./assets/javascript/technical.js"></script>
 <script>slideInit()</script>
 </body></html>
