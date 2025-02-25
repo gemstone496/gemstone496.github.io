@@ -4,26 +4,36 @@
   <title>Technical</title>
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
   <link rel="stylesheet" href="../assets/stylesheets/global.css">
-  <!--link rel="stylesheet" href="../assets/stylesheets/dark_mode.css"-->
+  <link rel="stylesheet" href="../assets/stylesheets/dark_mode.css">
   <link rel="stylesheet" href="../assets/stylesheets/technical.css">
   <script src="../assets/javascript/buttons.js"></script>
   <script src="../assets/javascript/animation.js"></script>
 </head>
-<body>
-
-<button id="initializer" onclick="initAnimation()">Set up tiles</button>
+<body class="dark-mode">
 
 <label for="tile-speed">Tile speed:</label>
 <select id="tile-speed">
-  <option value=5>Slow</option>
-  <option value=10>Medium</option>
-  <option value=13>Fast</option>
+  <option value=8>Slow</option>
+  <option value=16>Medium</option>
+  <option value=24>Fast</option>
 </select>
-<button id="animate-start">Dance!</button> <br><br>  
+<button id="animate-start" onclick="begin(this)">Dance!</button>
+<button id="animate-stop" onclick=""></button><br><hr><br> 
 
-<div id ="animation-container" data-count="2">
-  <div id="template" class="animable"></div>
+<button id="initializer" onclick="initAnimation(this)">Set up tiles</button>
+<hr>
+
+<div id ="animation-container" data-count="16">
 </div>
+
+<footer>
+  <hr>
+  <button id="dark-button" class="button" onclick="darkToggle()">Light Mode</button>
+  <hr>
+  <div>Technical: 300 minutes</div>
+  <hr>
+  <h3><a href="./start_page.html">Return to home</a></h3>
+</footer>
 
 </body>
 </html>
