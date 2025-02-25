@@ -24,6 +24,7 @@ class Tile {
     var x = dimension(this.element.style.left); // where am i now
     var y = dimension(this.element.style.top);
     var ddt = this.ddt(); // evaluate once for now, update later when appropriate
+    var bounds = this.bounds; // my code f***ing hates my class T-T
     this.stepId = setInterval(step, 40); // 40ms <==> 25fps
     this.active = true;
 
@@ -31,7 +32,9 @@ class Tile {
       // check distance from center
       if (edgeFound(this.dx, this.dy)) { // edge of box
         console.log(`ending #${this.stepId} due to tile edge`);
-        finishInterval(this.stepId);
+        clearInterval(this.stepId);
+        this.active = false;
+        finishInterval();
       } else {
         x += ddt[0]; y += ddt[1]; // incr
         x = Math.max(bounds[0], Math.min(x, bounds[1]));
@@ -119,23 +122,19 @@ function begin(button) {
 
 /**
  * @param {String} style the style element of the dimension (including 'px')
- * @returns {Number} The number of the dimension, w/o 'px'
+ * @returns {Number} the number of the dimension, w/o 'px'
  */
 function dimension(style) {
   return Number(style.replace(/px$/, ''));
 }
 
 /**
- * Clears the interval of id, then re-enables the dance button if no more animations are running
- * @param {Number | undefined} id
+ * re-enables the dance button if no more animations are running
  */
-function finishInterval(id) {
-  clearInterval(id); // finish
-  tiles[id] = false;
-
+function finishInterval() {
   let finished = true;
   for (const tile of tiles) {
-    if (entry[1]) {
+    if (tile.active) {
       finished = false;
       break;
     }
@@ -148,10 +147,11 @@ function finishInterval(id) {
 
 /** removes all existing tiles and all intervals to prep for recreation */
 function purgeTiles() {
-  let tiles = document.getElementsByClassName('animable'), len = tiles.length;
-  for(let i=0; i<len; i++) {
+  let len = tiles.length;
+  for(let i = len - 1; i >= 0; i--) {
     console.log(`Removing tile #${i}`)
-    tiles[0].parentNode.removeChild(tiles[0]);
+    let tile = tiles.pop();
+    tile.element.parentNode.removeChild(tile.element);
   }
 }
 
