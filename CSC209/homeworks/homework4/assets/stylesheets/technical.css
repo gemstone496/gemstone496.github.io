@@ -1,16 +1,16 @@
-#animationContainer {
+#animation-container {
   width: 400px;
   height: 400px;
   position: relative;
   background: rgb(226, 226, 126);
 }
-#redSq {
+#red-sq {
   width: 50px;
   height: 50px;
   position: absolute;
   background-color: rgb(220, 73, 73);
 }
-#blueSq {
+#blue-sq {
   width: 50px;
   height: 50px;
   top: 350px;
