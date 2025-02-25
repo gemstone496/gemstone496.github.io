@@ -1,6 +1,6 @@
 #animation-container {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   position: relative;
   background: rgb(226, 226, 126);
 }
@@ -9,10 +9,8 @@
   height: 50px;
   position: absolute;
   border-radius: 50%;
-  background-color: rgb(220, 73, 73);
+  background-color: rgba(220, 73, 122, 0.5);
 }
-#blue-sq {
-  top: 350px;
-  left: 350px;
-  background-color: rgb(93, 93, 215);
+#template {
+  display: none;
 }
