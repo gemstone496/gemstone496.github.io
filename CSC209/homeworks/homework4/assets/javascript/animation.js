@@ -97,28 +97,22 @@ function moveTile(tile) {
   tile.active = true;
 
   function step(tile) {
-    // check distance from center
-    if (edgeFound(tile)) { // edge of box
-      finishInterval(tile); // TODO reflect
-    } else {
-      x += ddt[0]; y += ddt[1]; // incr
-      x = Math.max(tile.bounds[0], Math.min(x, tile.bounds[1]));
-      y = Math.max(tile.bounds[2], Math.min(y, tile.bounds[3]));
-      tile.element.style.left = x + 'px';
-      tile.element.style.top = y + 'px';
+    // theck edges and reflect
+    if ((ddt[0] < 0 && x <= tile.bounds[0]) || 
+        (ddt[0] > 0 && x >= tile.bounds[1])) {
+      tile.theta = Math.PI - tile.theta;
+      ddt = cartesian(tile.r, tile.theta);
+    } if ((ddt[1] < 0 && y <= tile.bounds[2]) || 
+          (ddt[1] > 0 && y >= tile.bounds[3])) {
+      tile.theta = -tile.theta;
+      ddt = cartesian(tile.r, tile.theta);
     }
 
-    /**
-     * Decides whether an object is about to cross a bound.
-     * @returns {Boolean} whether tile should stop moving
-     */
-    function edgeFound(tile){
-      let stop = (ddt[0] < 0 && x <= tile.bounds[0]) ||
-                 (ddt[0] > 0 && x >= tile.bounds[1]) ||
-                 (ddt[1] < 0 && y <= tile.bounds[2]) ||
-                 (ddt[1] > 0 && y >= tile.bounds[3]);
-      return stop;
-    }
+    x += ddt[0]; y += ddt[1]; // incr
+    x = Math.max(tile.bounds[0], Math.min(x, tile.bounds[1]));
+    y = Math.max(tile.bounds[2], Math.min(y, tile.bounds[3]));
+    tile.element.style.left = x + 'px';
+    tile.element.style.top = y + 'px';
   }
 }
 
