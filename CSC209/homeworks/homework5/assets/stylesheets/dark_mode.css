@@ -1,0 +1,35 @@
+/* Dark mode (light mode?)!! */
+.dark-mode {
+  background-color: #202022;
+  color: white;
+
+  a:link {
+    color: #b1caff;
+    text-decoration: none;
+  } a:visited {
+    color: #9ebaf8;
+    text-decoration: none;
+  } a:hover {
+    color: #e0a5a5;
+    text-decoration: underline;
+  }
+  nav {
+    background-color: #303033;
+    color: white;
+  }
+  footer {
+    background-color: #202022;
+    color: white;
+  }
+  article {
+    background-color: #28282b;
+  }
+  .button {
+    background-color: #00000000;
+    border-color: #e0a5a5;
+    color: #e0a5a5;
+  } .button:hover {
+    background-color: #b56e6e;
+    color: #310c0c;
+  }
+}

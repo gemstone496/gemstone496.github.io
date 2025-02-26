@@ -1,0 +1,11 @@
+canvas {
+  background-color: rgb(226, 226, 126);
+  border: 2px solid rgb(37, 36, 37);
+}
+/* .animable {
+  background-color: rgba(220, 73, 122, 0.5);
+} */
+.dark-mode canvas {
+  background-color: rgb(235, 225, 255);
+  border: 2px solid rgb(76, 64, 70);
+}
