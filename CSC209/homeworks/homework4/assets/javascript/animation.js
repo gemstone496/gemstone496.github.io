@@ -17,44 +17,6 @@ class Tile {
     this.stepId = null;
     this.active = false;
   }
-
-  ddt() { return [this.r*Math.cos(this.theta), this.r*Math.sin(this.theta)]; }
-
-  move() {
-    var x = dimension(this.element.style.left); // where am i now
-    var y = dimension(this.element.style.top);
-    var ddt = this.ddt(); // evaluate once for now, update later when appropriate
-    var bounds = this.bounds; // my code f***ing hates my class T-T
-    this.stepId = setInterval(step, 40); // 40ms <==> 25fps
-    this.active = true;
-
-    function step() {
-      // check distance from center
-      if (edgeFound(this.dx, this.dy)) { // edge of box
-        console.log(`ending #${this.stepId} due to tile edge`);
-        clearInterval(this.stepId);
-        this.active = false;
-        finishInterval();
-      } else {
-        x += ddt[0]; y += ddt[1]; // incr
-        x = Math.max(bounds[0], Math.min(x, bounds[1]));
-        y = Math.max(bounds[2], Math.min(y, bounds[3]));
-        this.element.style.left = x + 'px';
-        this.element.style.top = y + 'px';
-      }
-      
-      /**
-       * Decides whether an object is about to cross a bound
-       * @returns {Boolean} whether tile should stop moving
-       */
-      function edgeFound() {
-        return (ddt[0] < 0 && x <= bounds[0]) ||
-               (ddt[0] > 0 && x >= bounds[1]) ||
-               (ddt[1] < 0 && y <= bounds[2]) ||
-               (ddt[1] > 0 && y >= bounds[3]);
-      }
-    }
-  }
 }
 
 /**
@@ -112,26 +74,72 @@ function begin(button) {
   console.log('Beginning animation...')
 
   button.disabled = true;
+  document.getElementById('animate-stop').disabled = false;
   const speed = document.getElementById('tile-speed').value;
 
   for (const tile of tiles) {
     tile.r = speed;
-    tile.move();
+    moveTile(tile);
   }
 }
 
 /**
- * @param {String} style the style element of the dimension (including 'px')
- * @returns {Number} the number of the dimension, w/o 'px'
+ * Triggers the animation sequence for tile, with fixed direction dx/dt and dy/dt
+ * @param {HTMLDivElement} tile The tile being animated
+ * @param {Number} r polar radius
+ * @param {Number} theta polar angle theta
  */
-function dimension(style) {
-  return Number(style.replace(/px$/, ''));
+function moveTile(tile) {
+  var ddt = cartesian(tile.r, tile.theta);
+  var x = dimension(tile.element.style.left); // where am i now
+  var y = dimension(tile.element.style.top);
+  tile.stepId = setInterval(step, 40, tile); // 40ms <==> 25fps
+  tile.active = true;
+
+  function step(tile) {
+    // check distance from center
+    if (edgeFound(tile)) { // edge of box
+      finishInterval(tile); // TODO reflect
+    } else {
+      x += ddt[0]; y += ddt[1]; // incr
+      x = Math.max(tile.bounds[0], Math.min(x, tile.bounds[1]));
+      y = Math.max(tile.bounds[2], Math.min(y, tile.bounds[3]));
+      tile.element.style.left = x + 'px';
+      tile.element.style.top = y + 'px';
+    }
+
+    /**
+     * Decides whether an object is about to cross a bound.
+     * @returns {Boolean} whether tile should stop moving
+     */
+    function edgeFound(tile){
+      let stop = (ddt[0] < 0 && x <= tile.bounds[0]) ||
+                 (ddt[0] > 0 && x >= tile.bounds[1]) ||
+                 (ddt[1] < 0 && y <= tile.bounds[2]) ||
+                 (ddt[1] > 0 && y >= tile.bounds[3]);
+      return stop;
+    }
+  }
+}
+
+function freeze(button) {
+  for (const tile of tiles) {
+    if (tile.active) {
+      clearInterval(tile.stepId);
+      tile.active = false;
+    }
+  }
+  document.getElementById('animate-start').disabled = false;
+  button.disabled = true;
 }
 
 /**
- * re-enables the dance button if no more animations are running
+ * ends tile's interval and re-enables the dance button if no more animations are running
  */
-function finishInterval() {
+function finishInterval(tile) {
+  clearInterval(tile.stepId);
+  tile.active = false;
+
   let finished = true;
   for (const tile of tiles) {
     if (tile.active) {
@@ -142,6 +150,7 @@ function finishInterval() {
   
   if (finished) {
     document.getElementById('animate-start').disabled = false;
+    document.getElementById('animate-stop').disabled = true;
   }
 }
 
@@ -165,8 +174,16 @@ function stopAnimation() {
     }
   }
   document.getElementById('animate-start').disabled = false;
+  document.getElementById('animate-stop').disabled = true;
 }
 
+/**
+ * @param {String} style the style element of the dimension (including 'px')
+ * @returns {Number} the number of the dimension, w/o 'px'
+ */
+function dimension(style) {
+  return Number(style.replace(/px$/, ''));
+}
 /**
  * converts from polar to Cartesian coordinates
  * @param {Number} r 
