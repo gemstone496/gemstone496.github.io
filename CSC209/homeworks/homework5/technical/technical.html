@@ -9,9 +9,11 @@
   <script src="../assets/javascript/buttons.js"></script>
   <script src="../assets/javascript/particle_physics.js"></script>
 </head>
-<body class="dark-mode">
+<body class="dark-mode" onload="sceneSet()">
 
 <section>
+  <div id="animation-container"></div>
+  
   <div>
     <hr>
     <label for="particle-count">Number of particles: </label>
@@ -22,13 +24,10 @@
       <option value=2 selected="true">Mid</option>
       <option value=3>Cold</option>
       </select><br><br>
-    <button id="initializer" onclick="sceneSet()">Set Stage</button><br><br>
+    <button id="initializer" onclick="reset()">Generate Particles</button><br><br>
     <button id="animate-start" onclick="begin(this)" disabled="true">Dance!</button>
     <button id="animate-stop" onclick="freeze(this)" disabled="true">FREEZE</button>
     <hr>
-  </div>
-
-  <canvas id ="animation-container">
   </div>
 </section>
 
