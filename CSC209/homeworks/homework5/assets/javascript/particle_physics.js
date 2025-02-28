@@ -13,17 +13,22 @@ var stage;
 var particles = [];
 var freezer = []; // the thing that freezes initial poses
 
-function reset() { stage.redraw(); }
 function begin() { stage.begin(); }
 function freeze() { stage.stop(); }
 
 function updateParts() {
   let input = document.getElementById('particle-count');
-  let count = input.value = Math.floor(input.value);
+  input.value = Math.floor(input.value);
+  let count = input.value;
   while (count != particles.length) {
     if (count < particles.length) {
       particles.pop();
-      freezer.pop();
+      if (count == particles.length && stage.static) { // reset without new particles
+        stage.clear();
+        for (let particle of particles) {
+          particle.draw();
+        }
+      }
     } else {
       particleBuilder();
     }
@@ -55,46 +60,48 @@ function particleBuilder() {
                 HEX.charAt(rgb[2]) + HEX.charAt(rgb[3]) + 
                 HEX.charAt(rgb[4]) + HEX.charAt(rgb[5]);
   
-  memory = new Memory(r, x, y, v, theta, orient, color);
-  freezer.push(memory);
-  return new Particle(memory);
+  let particle = new Particle(r, x, y, v, theta, orient, color);
+  particles.push(particle);
+  particle.draw();
+  return particle;
 }
 
 function sceneSet() {
   stage = {
     canvas : document.createElement('canvas'),
     interval : null,
+    static : true,
     begin : function() {
       this.stop();
       this.interval = setInterval(newFrame, FPS);
+      this.static = false;
       document.getElementById('animate-start').disabled = true;
       document.getElementById('animate-stop').disabled = false;
     },
     stop : function() {
       clearInterval(this.interval);
+      this.static = true;
       document.getElementById('animate-start').disabled = false;
       document.getElementById('animate-stop').disabled = true;
     },
     clear : function() {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
-    redraw : function(restore) {
+    redraw : function() {
+      this.stop();
+      this.clear();
+      for (let particle of particles) {
+        particle.reset();
+      }
+    },
+    regenerate : function() {
       this.stop();
       this.clear();
       let count = document.getElementById('particle-count').value;
       particles = []; // reset
       for (let i = 0; i < count; i++) {// randomize a bunch of things
-        let particle, memory;
-        if (restore) {
-          memory = freezer[i];
-          particle = new Particle(memory);
-        } else {
-          freezer = []; // also reset
-          particle = particleBuilder();
-        }
-        particles.push(particle);
+        let particle = particleBuilder();
         console.log(`Particle at (${particle.x}, ${particle.y}), color: ${particle.color}`);
-        particle.draw();
       }
     }
   }
@@ -103,7 +110,7 @@ function sceneSet() {
   stage.context = stage.canvas.getContext('2d');
   document.getElementById('animation-container').appendChild(stage.canvas);
   console.log(`Stage set.`);
-  stage.redraw();
+  stage.regenerate();
 }
 
 function newFrame() {
@@ -120,14 +127,15 @@ function newFrame() {
 }
 
 class Particle {
-  constructor(memory) {
-    this.r = memory.r;
-    this.x = memory.x;
-    this.y = memory.y;
-    this.v = memory.v;
-    this.theta = memory.theta;
-    this.arwOrient = memory.arwOrient;
-    this.color = memory.color;
+  constructor(r, x, y, v, theta, orient, color) {
+    this.r = r;
+    this.x = x;
+    this.y = y;
+    this.v = v;
+    this.theta = theta;
+    this.arwOrient = orient;
+    this.color = color;
+    this.init = [r, x, y, v, theta, orient, color];
     
     this.draw = function() {
       stage.context.beginPath();
@@ -177,6 +185,16 @@ class Particle {
         this.theta = -this.theta;
       }
       return [xNew, yNew];
+    }
+
+    this.reset = function() {
+      this.r = init[0];
+      this.x = init[1];
+      this.y = init[2];
+      this.v = init[3];
+      this.theta = init[4];
+      this.arwOrient = init[5];
+      this.color = init[6];
     }
   }
 }

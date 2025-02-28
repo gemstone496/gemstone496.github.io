@@ -30,7 +30,8 @@
       <option value=1 selected="true">Fade Out</option>
       <option value=0>None</option>
       </select><br><br>
-    <button id="initializer" onclick="reset(true)">Reset Particles</button>
+    <button id="initializer" onclick="stage.redraw()">Reset Particles</button>
+    <button id="reloader" onclick="stage.regenerate()">Regenerate Particles</button>
     <hr>
   </div>
   
