@@ -14,15 +14,16 @@
 <section>
   <div>
     <hr>
-    <button id="animate-start" onclick="begin(this)">Dance!</button>
-    <button id="animate-stop" onclick="freeze(this)">FREEZE</button><br><br>
+    <button id="animate-toggle" onclick="toggleAnimation(this)" data-mode="start">Dance!</button>
+    <!--button id="animate-start" onclick="begin(this)">Dance!</button>
+    <button id="animate-stop" onclick="freeze(this)">FREEZE</button--><br><br>
     <label for="particle-count">Number of particles: </label>
-      <input id="particle-count" type="number" value="10" min="1" onblur="updateParts()"><br><br>
+      <input id="particle-count" type="number" value="15" min="1" onblur="updateParts()"><br><br>
     <label for="temperature">Temperature: </label>
       <select id="temperature">
       <option value=3>Hot</option>
-      <option value=2 selected="true">Mid</option>
-      <option value=1>Cold</option>
+      <option value=2>Mid</option>
+      <option value=1 selected="true">Cold</option>
       </select><br><br>
     <label for="trace">Trace: </label>
       <select id="trace">
@@ -30,6 +31,8 @@
       <option value=1 selected="true">Fade Out</option>
       <option value=0>None</option>
       </select><br><br>
+    <label for="collider"> Allow Collisions: </label>
+      <input id="collider" type="checkbox"><br><br>
     <button id="initializer" onclick="stage.redraw()">Reset Particles</button>
     <button id="reloader" onclick="stage.regenerate()">Regenerate Particles</button>
     <hr>
@@ -43,6 +46,8 @@
   <button id="dark-button" class="button" onclick="darkToggle()">Light Mode</button>
   <hr>
   <div>Technical: 300 minutes</div>
+  <div>Creative: 300 minutes</div>
+  <div>Still-bugged particle collision handler: 300 minutes</div>
   <hr>
   <h3><a href="./start_page.html">Return to home</a></h3>
 </footer>
