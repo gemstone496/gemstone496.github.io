@@ -1,5 +1,5 @@
 const BOARD_HEIGHT = 20;
-const BOARD_WIDTH = 50;
+const BOARD_WIDTH = 60;
 const TILE_DIM = 20; // square tiles
 const FPS = 200; // 200ms = 5fps
 const INIT = [    // initial configuration for a space-efficient glider gun
@@ -75,7 +75,7 @@ class Tile {
    * @param {HTMLTableCellElement} tile The DOM row to append the tile to
    */
   constructor(i, j, tile) {
-    this.initial = 0; // todo randomize
+    this.initial = 0;
     this.alive = 0;
     this.next = 0;
 
@@ -84,10 +84,17 @@ class Tile {
     this.j = j;
   }
 
+  reset() {
+    this.next = this.initial;
+    this.draw();
+  }
   toggle() {
-    this.initial = this.alive = this.alive == 0 ? 1 : 0;
-    this.tile.classList.toggle('alive');
-    this.tile.classList.toggle('dead');
+    if (game.static) {
+      this.alive = this.alive == 0 ? 1 : 0;
+      this.initial = this.alive;
+      this.tile.classList.toggle('alive');
+      this.tile.classList.toggle('dead');
+    }
   }
   countNeighbors() {
     let count = 0;
@@ -136,6 +143,7 @@ function setupGame() {
 
   game = {
     board : gameBoard,
+    static : true,
     interval : null,
     tiles : new Deque(),
     addRow : function(end) {
@@ -193,11 +201,13 @@ function setupGame() {
  */
 function start(button) {
   console.log('Beginning game...')
+  
+  game.interval = setInterval(step, FPS);
 
   button.disabled = true;
   document.getElementById('game-stop').disabled = false;
 
-  game.interval = setInterval(step, FPS);
+  game.static = false;
 }
 
 /**
@@ -237,6 +247,7 @@ function step() {
 function stop(button) {
   clearInterval(game.interval);
   game.interval = null;
+  game.static = true;
 
   document.getElementById('game-start').disabled = false;
   button.disabled = true;
@@ -244,9 +255,14 @@ function stop(button) {
 
 /** removes all existing tiles and all intervals to prep for recreation */
 function reset() {
-  for (let i = 0; i < game.tiles.length; i++) {
-    for (let j = 0; j < game.tiles.get(i).length; j++) {
-      // todo write
+  stop(document.getElementById('game-stop'));
+
+  let rowCap = game.tiles.max()
+  for (let i = game.tiles.min(); i < rowCap; i++) {
+    let row = game.tiles.get(i);
+    let colCap = row.max();
+    for (let j = row.min(); j < colCap; j++) {
+      row.get(j).reset();
     }
   }
 }

@@ -1,4 +1,6 @@
-#game-container {
+#controls {
+  align-items: center;
+  display: flex;
   justify-content: center;
 }
 table#game-board {
