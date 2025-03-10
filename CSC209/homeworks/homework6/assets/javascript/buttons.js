@@ -1,3 +1,4 @@
+/** Toggles between dark and light modes */
 function darkToggle() {
   console.log("Toggling dark mode.")
   let on = document.body.classList.toggle("dark-mode");
@@ -5,9 +6,10 @@ function darkToggle() {
     document.getElementById("dark-button").innerHTML = "Dark Mode";
 }
 
-function openMenu() {
-  console.log("Hiding/Unhiding menu items.");
-  let nav = document.getElementById("nav");
-  nav.classList.toggle("hideable");
-  nav.classList.toggle("showable");
+/**
+ * @param {String} style the style element of the dimension (including 'px')
+ * @returns {Number} the number of the dimension, w/o 'px'
+ */
+function dimension(style) {
+  return Number(style.replace(/px$/, ''));
 }

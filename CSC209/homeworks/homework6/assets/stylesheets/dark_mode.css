@@ -28,7 +28,7 @@
     background-color: #00000000;
     border-color: #e0a5a5;
     color: #e0a5a5;
-  } .button:hover {
+  } .button:hover:enabled {
     background-color: #b56e6e;
     color: #310c0c;
   }

@@ -1,8 +1,12 @@
+#game-container {
+  justify-content: center;
+}
 table#game-board {
   border: 1px solid rgb(85, 86, 87);
   border-collapse: collapse;
   height: 500;
   width: 400;
+  margin: auto;
 }
 td.tile {
   border: 1px solid rgb(85, 86, 87);

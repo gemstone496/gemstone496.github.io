@@ -12,17 +12,16 @@
 <body class="dark-mode" onload="setupGame()">
 
 <header>
-  <h2>Game of Life:</h2><hr>
+  <h2>Game of Life</h2><hr>
 </header>
+<br>
+<div id="game-container">
+</div><br><br>
 
-<button id="game-start" onclick="start(this)">START</button>
-<button id="game-step" onclick="step(this)">STEP</button>
-<button id="game-stop" onclick="stop(this)" disabled="true">STOP</button>
-<button id="game-reset" onclick="reset(this)">RESET</button>
-<hr>
-
-<table id="game-board">
-</table>
+<button id="game-start" class="control button" onclick="start(this)">START</button>
+<button id="game-step" class="control button" onclick="step(this)">STEP</button>
+<button id="game-stop" class="control button" onclick="stop(this)" disabled="true">STOP</button>
+<button id="game-reset" class="control button" onclick="reset(this)">RESET</button>
 
 <footer>
   <hr>

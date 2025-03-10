@@ -1,33 +1,67 @@
+const BOARD_HEIGHT = 20;
+const BOARD_WIDTH = 50;
 const TILE_DIM = 20; // square tiles
+const FPS = 200; // 200ms = 5fps
+const INIT = [    // initial configuration for a space-efficient glider gun
+  [5, 1], [6, 1],
+    [5, 2], [6, 2],
+  [5, 11], [6, 11], [7, 11],
+    [4, 12], [8, 12],
+    [3, 13], [9, 13],
+    [3, 14], [9, 14],
+    [6, 15],
+    [4, 16], [8, 16],
+    [5, 17], [6, 17], [7, 17],
+    [6, 18],
+  [3, 21], [4, 21], [5, 21],
+    [3, 22], [4, 22], [5, 22],
+    [2, 23], [6, 23],
+    [1, 25], [2, 25], [6, 25], [7, 25],
+  [3, 35], [4, 35],
+    [3, 36], [4, 36]
+];
 /** for tracking existing tiles. entries are (row, column) */
 var game;
 
-/** a diy deque class for expanding the game board beyond visible tiles */
+/** 
+ * a diy deque class for expanding the game board beyond 
+ *  visible tiles and ease of mutability.
+ * has no pop or remove methods, because there is never a need
+ *  to reduce the size of the gameboard representation
+ */
 class Deque {
-  constructor() {
+  constructor(min, max, i) {
     this.fwd = new Array();
     this.bwd = new Array();
     this.length = 0;
+
+    // for insertions
+    if (min !== undefined && max !== undefined && i !== undefined) {
+      for (let j = 0; j < max; j++) {
+        this.push(new Tile(i, j, null))
+      }
+      for (let j = 1; j <= min; j++) {
+        this.pushFirst(new Tile(i, -j, null))
+      }
+    }
   }
 
   push(obj) {
     this.fwd.push(obj);
     this.length++;
   }
-  pop() {
-    this.length--;
-    return this.fwd.pop();
-  }
   pushFirst(obj) {
     this.bwd.push(obj);
     this.length++;
   }
-  popFirst() {
-    this.length--;
-    return this.bwd.pop();
-  }
   get(i) {
-    return i > 0 ? fwd[i] : bwd[-(i+1)];
+    return i >= 0 ? this.fwd[i] : this.bwd[-(i+1)];
+  }
+  min() {
+    return -this.bwd.length;
+  }
+  max() {
+    return this.fwd.length;
   }
 
 }
@@ -51,26 +85,40 @@ class Tile {
   }
 
   toggle() {
-    this.initial = this.alive = !this.alive;
-    console.log(`click changes: ${this.initial}, ${this.alive}`) // verify this works actually
+    this.initial = this.alive = this.alive == 0 ? 1 : 0;
+    this.tile.classList.toggle('alive');
+    this.tile.classList.toggle('dead');
   }
   countNeighbors() {
     let count = 0;
-    for (let v = -1; v <= 1; v++) {
-      for (let h = -1; h <= 1; h++) {
-        if (v !== 0 || h !== 0) {
-          count += game.tiles[this.i+v][this.j+h].alive;
+    for (let v = this.i-1; v <= this.i+1; v++) {
+      if (v < game.tiles.min() || v >= game.tiles.max()) {
+        if(this.alive == 0) {
+          continue;
+        }
+        game.addRow(v); // if out of bounds reference, add the appropriate row
+      }
+      for (let h = this.j-1; h <= this.j+1; h++) {
+        if (v !== this.i || h !== this.j) {
+          if (h < game.tiles.get(0).min() || h >= game.tiles.get(0).max()) {
+            if(this.alive == 0) {
+              continue;
+            }
+            game.addCol(h);
+          }
+          count += game.tiles.get(v).get(h).alive;
         }
       }
     }
     return count;
   }
   draw() {
-    if (this.next != this.alive) {
+    if (this.next != this.alive && this.tile !== null) {
       this.tile.classList.toggle('alive');
       this.tile.classList.toggle('dead');
-      this.alive = this.next;
     }
+    
+    this.alive = this.next;
   }
 }
 
@@ -78,42 +126,64 @@ class Tile {
  * Sets up the board for the game to begin
  */
 function setupGame() {
-  let boardStyle;
-  console.log('Setting up...')
+  let gameBoard;
+  console.log('Setting up...');
+
+  gameBoard = document.createElement('table');
+  gameBoard.id = 'game-board';
+  gameBoard.maxHeight = BOARD_HEIGHT*TILE_DIM;
+  document.getElementById('game-container').appendChild(gameBoard);
 
   game = {
-    board : document.getElementById('game-board'),
+    board : gameBoard,
     interval : null,
-    tiles : new Array()
+    tiles : new Deque(),
+    addRow : function(end) {
+      console.log(`Adding row ${end}`);
+      let newRow = new Deque(this.tiles.get(0).min(), this.tiles.get(0).max(), end);
+      end < 0 ? this.tiles.pushFirst(newRow) : this.tiles.push(newRow);
+    },
+    addCol : function(end) {
+      console.log(`Adding col ${end}`);
+      for (let i = this.tiles.min(); i < this.tiles.max(); i++) {
+        let tile = new Tile(i, end, null);
+        end < 0 ? this.tiles.get(i).pushFirst(tile) : this.tiles.get(i).push(tile);
+      }
+    }
   }
 
-  boardStyle = window.getComputedStyle(game.board);
-  const height = boardStyle.height / TILE_DIM;
-  const width = boardStyle.width / TILE_DIM;
-
-  for (let i = 0; i < height; i++) {
+  for (let i = 0; i < BOARD_HEIGHT; i++) {
     let row;
 
-    game.tiles.push(new Array()); // new row
+    game.tiles.push(new Deque()); // new row
 
     row = document.createElement('tr');
+    row.id = `row-${i}`;
     row.classList = 'tile-row';
     row.maxHeight = TILE_DIM;
     game.board.appendChild(row); // add to DOM
 
-    for (let j = 0; j < width; j++) {
+    for (let j = 0; j < BOARD_WIDTH; j++) {
       console.log(`Inserting tile (${i}, ${j}).`);
       
-      let tile = document.createElement('td');
-      tile.classList = 'tile dead'; // todo randomize
-      tile.id = `${i}.${j}`;
-      tile.addEventListener('click', this.toggle);
-      tile.dataset.i = i;
-      tile.dataset.j = j;
-      row.appendChild(tile);
+      let domTile = document.createElement('td');
+      domTile.classList = 'tile dead'; // todo randomize
+      domTile.id = `${i}.${j}`;
+      domTile.width = TILE_DIM;
+      domTile.height = TILE_DIM;
+      domTile.dataset.i = i;
+      domTile.dataset.j = j;
 
-      game.tiles[i].push(new Tile(i, j, tile)); // new tile. constructor adds to DOM
+      let tile = new Tile(i, j, domTile);
+      domTile.addEventListener('click', () => tile.toggle());
+      row.appendChild(domTile);
+
+      game.tiles.get(i).push(tile); // new tile. constructor adds to DOM
     }
+  }
+
+  for (let coord of INIT) {
+    game.tiles.get(coord[0]).get(coord[1]).toggle();
   }
 }
 
@@ -127,7 +197,7 @@ function start(button) {
   button.disabled = true;
   document.getElementById('game-stop').disabled = false;
 
-  // todo set interval  
+  game.interval = setInterval(step, FPS);
 }
 
 /**
@@ -135,10 +205,12 @@ function start(button) {
  */
 function step() {
   // calculate next state
-  for (let i = 0; i < game.tiles.length; i++) {
-    for (let j = 0; j < game.tiles[i].length; j++) {
+  let row = game.tiles.max()
+  for (let i = game.tiles.min(); i < row; i++) {
+    let col = game.tiles.get(i).max();
+    for (let j = game.tiles.get(i).min(); j < col; j++) {
       let tile, countNeighbors;
-      tile = game.tiles[i][j];
+      tile = game.tiles.get(i).get(j);
       countNeighbors = tile.countNeighbors();
       switch (countNeighbors) {
         case 2:
@@ -154,15 +226,17 @@ function step() {
   }
 
   // draw next state
-  for (let i = 0; i < game.tiles.length; i++) {
-    for (let j = 0; j < game.tiles[i].length; j++) {
-      game.tiles[i][j].draw();
+  for (let i = 0; i < row; i++) { // haven't implemented zoom-out, so no need to expand back
+    let col = game.tiles.get(i).max();
+    for (let j = 0; j < col; j++) {
+      game.tiles.get(i).get(j).draw();
     }
   }
 }
 
 function stop(button) {
   clearInterval(game.interval);
+  game.interval = null;
 
   document.getElementById('game-start').disabled = false;
   button.disabled = true;
@@ -171,7 +245,7 @@ function stop(button) {
 /** removes all existing tiles and all intervals to prep for recreation */
 function reset() {
   for (let i = 0; i < game.tiles.length; i++) {
-    for (let j = 0; j < game.tiles[i].length; j++) {
+    for (let j = 0; j < game.tiles.get(i).length; j++) {
       // todo write
     }
   }
