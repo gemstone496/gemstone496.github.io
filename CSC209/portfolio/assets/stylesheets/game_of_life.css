@@ -1,0 +1,24 @@
+#controls {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+table#game-board {
+  border: 1px solid rgb(85, 86, 87);
+  border-collapse: collapse;
+  height: 500;
+  width: 400;
+  margin: auto;
+}
+td.tile {
+  border: 1px solid rgb(85, 86, 87);
+  border-collapse: collapse;
+  max-height: 20; /* todo figure out how to set this from js */
+  max-width: 20;
+}
+td.dead {
+  background-color: rgb(40, 41, 42);
+}
+td.alive {
+  background-color: rgb(233, 236, 239);
+}

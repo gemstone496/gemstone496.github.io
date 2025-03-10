@@ -147,10 +147,12 @@ function setupGame() {
     interval : null,
     tiles : new Deque(),
     addRow : function(end) {
+      console.log(`Adding row ${end}`);
       let newRow = new Deque(this.tiles.get(0).min(), this.tiles.get(0).max(), end);
       end < 0 ? this.tiles.pushFirst(newRow) : this.tiles.push(newRow);
     },
     addCol : function(end) {
+      console.log(`Adding col ${end}`);
       for (let i = this.tiles.min(); i < this.tiles.max(); i++) {
         let tile = new Tile(i, end, null);
         end < 0 ? this.tiles.get(i).pushFirst(tile) : this.tiles.get(i).push(tile);
