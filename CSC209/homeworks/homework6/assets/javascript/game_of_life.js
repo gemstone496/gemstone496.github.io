@@ -253,6 +253,12 @@ function stop(button) {
   button.disabled = true;
 }
 
+function stepOnce() {
+  stop(document.getElementById('game-stop'));
+
+  step();
+}
+
 /** removes all existing tiles and all intervals to prep for recreation */
 function reset() {
   stop(document.getElementById('game-stop'));
