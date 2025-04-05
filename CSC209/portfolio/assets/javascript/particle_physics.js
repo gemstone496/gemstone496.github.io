@@ -18,20 +18,15 @@ var particles = [];
  */
 function toggleAnimation(button) {
   let mode = button.dataset.mode;
-  console.log
   mode == 'start' ? stage.begin() : stage.stop();
   button.textContent = mode == 'start' ? 'FREEZE' : 'Dance!';
   button.dataset.mode = mode == 'start' ? 'stop' : 'start';
 }
 function begin() {
   stage.begin();
-  // document.getElementById('animate-start').disabled = true;
-  // document.getElementById('animate-stop').disabled = false;
 }
 function freeze() {
   stage.stop();
-  // document.getElementById('animate-start').disabled = false;
-  // document.getElementById('animate-stop').disabled = true;
 }
 
 function updateParts() {
@@ -132,7 +127,6 @@ function sceneSet() {
       particles = []; // reset
       for (let i = 0; i < count; i++) {// randomize a bunch of things
         let particle = particleBuilder();
-        console.log(`Particle at (${particle.x}, ${particle.y}), color: ${particle.color}`);
       }
     }
   }
@@ -140,7 +134,6 @@ function sceneSet() {
   stage.canvas.height = CVS_HGT;
   stage.context = stage.canvas.getContext('2d');
   document.getElementById('animation-container').appendChild(stage.canvas);
-  console.log(`Stage set.`);
   stage.regenerate();
 }
 
@@ -192,7 +185,6 @@ function newFrame() {
         //   particle.x += x_1; particle.y += y_1;
         //   crasher.x += x_2; crasher.y += y_2;
         // }
-        console.log(`part: (${particle.x}, ${particle.y}); theta: ${particle.theta}`);
       }
     }
   }

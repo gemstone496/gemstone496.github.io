@@ -134,7 +134,6 @@ class Tile {
  */
 function setupGame() {
   let gameBoard;
-  console.log('Setting up...');
 
   gameBoard = document.createElement('table');
   gameBoard.id = 'game-board';
@@ -147,12 +146,10 @@ function setupGame() {
     interval : null,
     tiles : new Deque(),
     addRow : function(end) {
-      console.log(`Adding row ${end}`);
       let newRow = new Deque(this.tiles.get(0).min(), this.tiles.get(0).max(), end);
       end < 0 ? this.tiles.pushFirst(newRow) : this.tiles.push(newRow);
     },
     addCol : function(end) {
-      console.log(`Adding col ${end}`);
       for (let i = this.tiles.min(); i < this.tiles.max(); i++) {
         let tile = new Tile(i, end, null);
         end < 0 ? this.tiles.get(i).pushFirst(tile) : this.tiles.get(i).push(tile);
@@ -172,7 +169,6 @@ function setupGame() {
     game.board.appendChild(row); // add to DOM
 
     for (let j = 0; j < BOARD_WIDTH; j++) {
-      console.log(`Inserting tile (${i}, ${j}).`);
       
       let domTile = document.createElement('td');
       domTile.classList = 'tile dead'; // todo randomize
@@ -200,8 +196,6 @@ function setupGame() {
  * @param {HTMLButtonElement} button the button that called this action
  */
 function start(button) {
-  console.log('Beginning game...')
-  
   game.interval = setInterval(step, FPS);
 
   button.disabled = true;

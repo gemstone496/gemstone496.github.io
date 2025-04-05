@@ -1,28 +1,5 @@
 /* Styles unique to technical page */
 
-table {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 1px;
-  text-align: center;
-  width: 100%;
-  th {
-    background-color: yellow; /* awful color choice T-T */
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-weight: bold;
-    padding: 1px 4px;
-  } td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 1px 4px;
-  }
-}
-
-.tbl-topic {
-  max-width: 50%;
-}
-
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
 .slide {display: none;}
