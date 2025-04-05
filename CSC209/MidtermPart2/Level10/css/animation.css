@@ -1,0 +1,16 @@
+section {
+  margin-left: 10px;
+}
+canvas {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+  background-color: #ebe1ff; 
+  border: 2px solid rgb(58, 42, 58);
+}
+/* .animable {
+  background-color: rgba(220, 73, 122, 0.5);
+} */
+.dark-mode canvas {
+  border: 3px solid rgb(120, 142, 228);
+}

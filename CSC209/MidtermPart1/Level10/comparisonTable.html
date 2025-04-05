@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/comparisonTable.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./js/generate_table.js"></script>
+</head>
+<body onload="tableInit()">
+
+<h2>Comparison Table</h2>
+
+<div><p>The <code>link</code> tag in the html <code>head</code> tells the webpage that
+  it should go to the link at its <code>href</code> attribute and use that as a stylesheet
+  for the page. The stylesheet supplies styling information for the <code>table</code>,
+  <code>th</code>, and <code>td</code> elements, as well as handles the alternating
+  row colors and the colors of the checks and Xs </p></div>
+
+<table id="comparator">
+  <tr>
+    <th style="width:50%">Name</th>
+    <th>Part 1</th>
+    <th>Part 2</th>
+  </tr>
+</table>
+
+<script>
+  const NROWS = 6;
+  const NCOLS = 2;
+  const FEATURES = ['River', 'Person', 'Road', 'Room', 'Angel', 'Devil'];
+  const BASIC = [true, true, false, false, true, false]; // swapping out for this implementation, better scalability
+  const PRO = [true, true, true, false, false, true]; // true => CHECK, false => REMOVE
+  const CHECK = 'fa-check'; // and if i want to change the classes i do that here
+  const REMOVE = 'fa-remove';
+</script>
+
+</body>
+</html>

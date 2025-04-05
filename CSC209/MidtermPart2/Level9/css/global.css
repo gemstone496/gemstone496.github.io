@@ -1,0 +1,12 @@
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  padding: 10px;
+}

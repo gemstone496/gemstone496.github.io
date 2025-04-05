@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Accordion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/iconbar.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/accordion.css">
+  <script src="../js/accordion.js"></script>
+</head>
+<body>
+
+<div class="icon-bar">
+  <a href="../home.html"><i class="fa fa-home"></i></a> 
+  <a href="./search.html"><i class="fa fa-search"></i></a> 
+  <a href="./photo.html"><i class="fa fa-photo"></i></a>  
+  <a href="./movie.html"><i class="fa fa-file-movie-o"></i></a>
+  <a class="active" href="#"><i class="fa fa-download"></i></a>
+  <a href="./print.html"><i class="fa fa-print"></i></a>
+  <a href="./trash.html"><i class="fa fa-trash"></i></a> 
+</div>
+
+<section><article>
+<h2>Accordion with symbols</h2>
+<p>In this example we have added a "plus" sign to each button. When the user clicks on the button, the "plus" sign is replaced with a "minus" sign.</p>
+
+<div id="accordion"></div>
+
+</article></section>
+
+<script>
+  const NRIMAGES = 8;
+  const IMG_PATH = '../images/bonfire/img-INDEX.png';
+
+  accordionInit();
+</script>
+
+</body>
+</html>
