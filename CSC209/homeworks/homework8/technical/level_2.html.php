@@ -3,6 +3,7 @@ include "../assets/php/h8_tech.php";
 $TYPE = "Level 2";
 $TIME = 2;
 $HOME_LINK = "./tech.html.php";
+
 $IMGS = glob("../assets/images/bonfire/*.png");
 ?>
 <html>

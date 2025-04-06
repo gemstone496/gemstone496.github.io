@@ -26,7 +26,7 @@ function gen_slides(array $imgs, string $classifier = 'bonfire') {
     $printout .= "
       <div id='$caption' class='slide fade inactive'>
         <div class='numbertext'>$i / $num_slides</div>
-        <img class='bonfire' src='$img' alt='$caption'>
+        <img class='$classifier-slide' src='$img' alt='$caption'>
         <div class='text'>$caption</div>
       </div>";
   }

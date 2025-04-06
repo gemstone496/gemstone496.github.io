@@ -3,6 +3,7 @@ include "../assets/php/h8_tech.php";
 $TYPE = "Level 6";
 $TIME = 3;
 $HOME_LINK = "./tech.html.php";
+
 $IMGS = glob(find_asset("images/bonfire").'*');
 ?>
 <html>
@@ -10,8 +11,7 @@ $IMGS = glob(find_asset("images/bonfire").'*');
   <title><?= $TYPE ?></title>
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
   <?php import_stylesheets(array("hw8_tech")); ?>
-  <script src="../assets/javascript/helpers.js"></script>
-  <script src="../assets/javascript/hw8_tech.js"></script>
+  <?php import_scripts(array("hw8_tech")); ?>
 </head>
 <body class="dark-mode" onload="showSlides(1)">
 

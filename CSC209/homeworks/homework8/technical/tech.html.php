@@ -1,7 +1,7 @@
 <?php
 include "../assets/php/helpers.php";
 $TYPE = "Technical";
-$TIME = "5";
+$TIME = "10";
 $HOME_LINK = "../start_page.html.php";
 $LEVELS = glob("*.*");
 ?>
@@ -9,9 +9,8 @@ $LEVELS = glob("*.*");
 <head>
   <title>Tutorials</title>
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-  <link rel="stylesheet" href="../assets/stylesheets/global.css">
-  <link rel="stylesheet" href="../assets/stylesheets/dark_mode.css">
-  <script src="../assets/javascript/helpers.js"></script>
+  <?php import_stylesheets(array()); ?>
+  <?php import_scripts(array()); ?>
 </head>
 <body class="dark-mode">
 

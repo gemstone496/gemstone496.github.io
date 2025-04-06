@@ -1,8 +1,15 @@
 <?php
 /**
+ * @param assetname subfolder of assets to search for images in (default `assets`)
+ */
+function asset_dirsearch(string $assetname = "assets") {
+
+}
+
+/**
  * @param specials specialized stylesheets to import. DO NOT include `.css`, i will do that for you
  * @param dirname the directory name to search for (by default searches for `stylesheets`)
- * @param defaults the file names (name only, no suffix) to search for
+ * @param defaults the file names (name only, no suffix) to import by default
  */
 function import_stylesheets(array $specials, 
                             string $dirname = "stylesheets", 
@@ -12,6 +19,23 @@ function import_stylesheets(array $specials,
   foreach ($sheetnames as $file) {
     if (is_file($stylesheets.$file.'.css')) {
       echo "<link rel='stylesheet' href='".$stylesheets.$file.".css'>";
+    }
+  }
+}
+
+/**
+ * @param specials specialized stylesheets to import. DO NOT include `.js`, i will do that for you
+ * @param dirname the directory name to search for (by default searches for `javascript`)
+ * @param defaults the file names (name only, no suffix) to search for by default
+ */
+function import_scripts(array $specials, 
+                            string $dirname = "javascript", 
+                            array $defaults = array("helpers")) {
+  $scripts = find_asset($dirname);
+  $scriptnames = array_merge($defaults, $specials);
+  foreach ($scriptnames as $file) {
+    if (is_file($scripts.$file.'.js')) {
+      echo "<script src='".$scripts.$file.".js'></script>";
     }
   }
 }
