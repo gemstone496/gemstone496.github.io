@@ -1,9 +1,13 @@
 <?php
-/**
- * @param assetname subfolder of assets to search for images in (default `assets`)
- */
-function asset_dirsearch(string $assetname = "assets") {
 
+function docu_header(string $type, array $special_assets) {
+  $printout = "";
+  $printout .= "<head>
+    <title>$type</title>
+    <link rel='icon' type='image/x-icon' href='".find_asset("images")."favicon.ico'>
+    ".import_stylesheets($special_assets)."
+    ".import_scripts($special_assets)."\n</head>";
+  return $printout;
 }
 
 /**
@@ -14,13 +18,15 @@ function asset_dirsearch(string $assetname = "assets") {
 function import_stylesheets(array $specials, 
                             string $dirname = "stylesheets", 
                             array $defaults = array("global", "dark_mode")) {
+  $printout = "";
   $stylesheets = find_asset($dirname);
   $sheetnames = array_merge($defaults, $specials);
   foreach ($sheetnames as $file) {
     if (is_file($stylesheets.$file.'.css')) {
-      echo "<link rel='stylesheet' href='".$stylesheets.$file.".css'>";
+      $printout .= "<link rel='stylesheet' href='".$stylesheets.$file.".css'>";
     }
   }
+  return $printout;
 }
 
 /**
@@ -31,13 +37,15 @@ function import_stylesheets(array $specials,
 function import_scripts(array $specials, 
                             string $dirname = "javascript", 
                             array $defaults = array("helpers")) {
+  $printout = "";
   $scripts = find_asset($dirname);
   $scriptnames = array_merge($defaults, $specials);
   foreach ($scriptnames as $file) {
     if (is_file($scripts.$file.'.js')) {
-      echo "<script src='".$scripts.$file.".js'></script>";
+      $printout .= "<script src='".$scripts.$file.".js'></script>";
     }
   }
+  return $printout;
 }
 
 /**
@@ -64,6 +72,7 @@ function find_asset(string $dirname) {
 }
 
 /**
+ * TODO swap to return $printout instead of echo
  * dumps supplied files into an ordered list
  * @param files the array of all files to dump
  * @param exclude (optional) the array of files included in the list which should not be dumped

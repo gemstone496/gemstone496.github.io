@@ -46,20 +46,6 @@ nav {
   max-width: fit-content;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Used for nav bar list items */
-li {
-  padding-left: 10pt;
-}
-li.admin {
-  font-weight: bolder;
-  padding-left: 10%;
-}
-
 a:link {
   color: #335eb9;
   text-decoration: none;
@@ -71,6 +57,10 @@ a:visited {
 a:hover {
   color: #5f2020;
   text-decoration: underline;
+}
+
+.flex-center {
+  justify-content:center;
 }
 
 /* Default button styling */
@@ -91,17 +81,6 @@ a:hover {
   border: 2px solid #5f2020;
 } .button:disabled {
   opacity: 0.5;
-}
-
-/* Menu dropdown styling */
-.hideable {
-  .hidden {
-    display: none;
-  }
-} .showable {
-  .hidden {
-    display: block;
-  }
 }
 
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */

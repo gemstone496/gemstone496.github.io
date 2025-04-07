@@ -4,7 +4,8 @@ $REFS = array(
   "https://www.geeksforgeeks.org/how-to-iterate-over-characters-of-a-string-in-php/"
 );
 $TUTTIME = 3;
-$TECHTIME = 6.5;
+$TECHTIME = 10;
+$CRTIME = 1;
 ?>
 <html>
 <head>

@@ -4,15 +4,23 @@
 body { font-family: Verdana, sans-serif; margin:0 }
 section { margin: 5px 10px; }
 select { height: fit-content; }
-label { margin-left: 20px; }
+label {
+  padding: 5px 10px 5px 0px;
+}
 
 .slide.active { display: block; }
 .slide.inactive { display: none; }
 .show { display: block; }
 .hide { display: none; }
-img { vertical-align: middle; }
+
+img { 
+  max-height: 500px;
+  max-width: 500px;
+  vertical-align: middle;
+}
 img.bonfire-slide { max-width: 200px; }
 img.firefly-slide { max-width: 400px; }
+img.immolation-slide { max-width: 350px; }
 
 /* Slideshow container */
 .slideshow-container {
@@ -78,13 +86,13 @@ img.firefly-slide { max-width: 400px; }
 /* The dots/bullets/indicators */
 #dots { 
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 20px 0px 3px;
 }
 .dot {
   cursor: pointer;
   height: 15px;
   width: 15px;
-  margin: 2px 1px;
+  margin: 2px 0px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
