@@ -1,4 +1,1 @@
-crownofburningviolets
-1
-ladyofwrath
-1
+{"aurora":"1","crownofburningviolets":"admin"}

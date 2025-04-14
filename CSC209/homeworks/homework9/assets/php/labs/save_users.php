@@ -1,7 +1,8 @@
 <?php
 include "../helpers.php";
 $layout_args = [
-  "type" => "Profile"
+  "type" => "Profile",
+  "home" => "../../../".$_POST["homelink"].".html.php"
 ];
 ?>
 
@@ -9,19 +10,36 @@ $layout_args = [
 <?= render_layout("head", $layout_args) ?>
 <body>
 
-Welcome <?php echo $_POST["uname"]; ?><br>
-Your password is: <?php echo $_POST["pwd"]; ?>
-
 <?php
-$fp = fopen("../../../output/users.txt", "a");
+$output = "../../../output/users.txt";
+if (file_exists($output)) {
+  $fp = fopen($output, "r");
+    $json = fread($fp, filesize($output));
+    $users = json_decode($json, true);
+  fclose($fp);
+} else {
+  $users = [];
+}
 
-fwrite($fp, $_POST["uname"]);
-fwrite($fp, "\n");
-fwrite($fp, $_POST["pwd"]);
-fwrite($fp, "\n");
+$uname = $_POST["uname"];
+$pwd = $_POST["pwd"];
+if ($users["uname"] == null || $users["uname"] == $pwd) {
+  if ($users["uname"] == null) {
+    $users = array_merge($users, [$uname => $pwd]);
 
-fclose($fp)
+    $fp = fopen($output,"w");
+    fwrite($fp, json_encode($users));
+
+    fclose($fp);
+  } ?>
+  Welcome <?= $_POST["uname"]; ?><br>
+  Your password is: <?= $_POST["pwd"]; ?>
+<?php } elseif ($users["uname"] != $pwd) { ?>
+  Login failed for user <?= $_POST["uname"]; ?>. Password did not match.
+<?php }
 ?>
+
+<?= render_layout("footer_std", $layout_args) ?>
 
 </body>
 </html>

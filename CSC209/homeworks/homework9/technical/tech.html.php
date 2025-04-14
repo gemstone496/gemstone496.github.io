@@ -1,5 +1,5 @@
 <?php
-include "../assets/php/helpers.php";
+include_once "../assets/php/helpers.php";
 $layout_args = [
   "type" => "Technical",
   "time" => "5",

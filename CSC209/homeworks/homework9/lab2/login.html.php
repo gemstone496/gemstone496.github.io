@@ -1,4 +1,4 @@
-<?php include '../assets/php/helpers.php' ?>
+<?php include_once '../assets/php/helpers.php' ?>
 <!DOCTYPE html>
 <html>
 <?= render_layout("head", ["type" => "Create Account"]) ?>
@@ -7,6 +7,7 @@
 <h2>HTML Forms</h2>
 
 <form action='../assets/php/labs/save_users.php' method='post'>
+    <input type='text' id='homelink' name='homelink' value='lab2/login' style='display:none;'>
   <label for='uname'>Username:</label><br>
     <input type='text' id='uname' name='uname' value='crownofburningviolets'><br>
   <label for='pwd'>Password:</label><br>

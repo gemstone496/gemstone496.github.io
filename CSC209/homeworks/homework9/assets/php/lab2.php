@@ -1,4 +1,5 @@
-<?php 
+<?php
+include_once "helpers.php";
 
 /**
  * Counts the number of users in provided filename
@@ -7,13 +8,11 @@
  */
 function count_users(string $filename): int {
   $filepath = find_asset("output").$filename;
-  $count = 0;
   $user_file = fopen($filepath, "r");
-  while (($line = fgets($user_file)) !== false) {
-    $count++;
-  }
+    $json = fread($user_file, filesize($filepath));
+    $users = json_decode($json,true);
   fclose($user_file);
-  return $count / 2; // every user made 2 entries
+  return count($users); // every user made 2 entries
 }
 
 /**
@@ -26,7 +25,7 @@ function extractFolderName(string $path): int {
   $chars = preg_split('//u', $basename, -1, PREG_SPLIT_NO_EMPTY); // https://www.geeksforgeeks.org/how-to-iterate-over-characters-of-a-string-in-php/
   $numStr = "";
   foreach ($chars as $char) {
-    $numStr = is_numeric($char) ? $numStr.$char : "";
+    $numStr = is_numeric($char) ? "$numStr$char" : "";
   }
   $numStr = $numStr == "" ? 0 : $numStr;
   return intval($numStr);

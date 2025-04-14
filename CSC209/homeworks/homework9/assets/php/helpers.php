@@ -13,26 +13,12 @@ function render_layout(string $style, array $render_args = []): void {
 }
 
 /**
- * @deprec hw 9
- * use `render_layout("head", [ "type" => <type>, "special_assets" => [<specials>] ])
- */
-function docu_header(string $type = "Daughter of the Blaze", array $special_assets = []): string {
-  $html = "";
-  $html .= "<head>
-    <title>$type</title>
-    <link rel='icon' type='image/x-icon' href='".find_asset("images")."favicon.ico'>
-    ".import_stylesheets($special_assets)."
-    ".import_scripts($special_assets)."\n</head>";
-  return $html;
-}
-
-/**
  * @param array $specials specialized stylesheets to import. DO NOT include `.css`, i will do that for you
  * @param string $dirname the directory name to search for (by default searches for `stylesheets`)
  * @param array $defaults the file names (name only, no suffix) to import by default
  * @return string the html markup for the page stylesheet link tags
  */
-function import_stylesheets(array $specials, 
+function import_stylesheets(array $specials,
                             string $dirname = "stylesheets", 
                             array $defaults = ["global", "dark_mode"]): string {
   $printout = "";
@@ -71,7 +57,7 @@ function import_scripts(array $specials,
  * @param string $dirname the name of the directory in assets to search for
  * @return string `[../]*assets/$dirname/`, or just `[../]*assets/` if not found
  */
-function find_asset(string $dirname): string {
+function find_asset(string $dirname = "assets"): string {
   $wcd = '.';
   for ($i = 0; $i < 5; $i++) { // don't go more than 5 layers up
     if(is_dir("$wcd/$dirname")) { // if you find the asset here, leave
@@ -116,4 +102,18 @@ function dump(array $files, array $exclude = []): string {
  */
 function strip_filename(string $filename): string {
   return ucfirst(preg_replace("/[_-]/", " ", preg_replace("/\.(\w*)/", "", basename($filename))));
+}
+
+/**
+ * @deprec hw 9
+ * use `render_layout("head", [ "type" => <type>, "special_assets" => [<specials>] ])
+ */
+function docu_header(string $type = "Daughter of the Blaze", array $special_assets = []): string {
+  $html = "";
+  $html .= "<head>
+    <title>$type</title>
+    <link rel='icon' type='image/x-icon' href='".find_asset("images")."favicon.ico'>
+    ".import_stylesheets($special_assets)."
+    ".import_scripts($special_assets)."\n</head>";
+  return $html;
 }
