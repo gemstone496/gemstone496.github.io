@@ -1,19 +1,13 @@
 <?php 
 include './assets/php/helpers.php';
-$REFS = array(
-  "https://www.geeksforgeeks.org/how-to-iterate-over-characters-of-a-string-in-php/"
-);
+$REFS = array();
 $TUTTIME = 3;
 $TECHTIME = 10;
 $CRTIME = 1;
 ?>
 <html>
-<head>
-  <title>Daughter of the Blaze</title>
-  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
-  <?php import_stylesheets(array()); ?>
-  <?php import_scripts(array()); ?>
-</head>
+
+<?= docu_header() ?>
 
 <body class="dark-mode">
 <div>

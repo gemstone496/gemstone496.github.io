@@ -10,4 +10,3 @@ function extractFolderName(string $path) {
   $numStr = $numStr == "" ? 0 : $numStr;
   return intval($numStr);
 }
-?>
