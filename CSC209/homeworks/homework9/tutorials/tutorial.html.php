@@ -2,7 +2,7 @@
 include_once "../assets/php/helpers.php";
 $layout_args = [
   "type" => "Tutorial",
-  "time" => "0",
+  "time" => "3",
   "home" => "../start_page.html.php"
 ];
 
@@ -17,7 +17,7 @@ $tutorials = glob("*.*");
 <div>
   <h2>List of tutorials</h2>
   <button id="dark-button" class="button" onclick="darkToggle()">Light Mode</button>
-  <?php dump($tutorials, [basename(__FILE__)]); ?>
+  <?= dump($tutorials, [basename(__FILE__)]); ?>
 </div>
 
 <?php render_layout(

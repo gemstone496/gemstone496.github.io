@@ -33,7 +33,7 @@ function import_stylesheets(array $specials,
 }
 
 /**
- * @param array $specials specialized stylesheets to import. DO NOT include `.js`, i will do that for you
+ * @param array $specials specialized scripts to import. DO NOT include `.js`, i will do that for you
  * @param string $dirname the directory name to search for (by default searches for `javascript`)
  * @param array $defaults the file names (name only, no suffix) to search for by default
  * @return string the html markup for the js script tags

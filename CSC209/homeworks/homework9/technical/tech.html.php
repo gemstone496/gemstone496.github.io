@@ -17,7 +17,7 @@ $LEVELS = glob("*.*");
 
 <div>
   <button id="dark-button" class="button" onclick="darkToggle()">Light Mode</button>
-  <?php dump($LEVELS, [basename(__FILE__)]); ?>
+  <?= dump($LEVELS, [basename(__FILE__)]); ?>
 </div>
 
 <?php render_layout(
