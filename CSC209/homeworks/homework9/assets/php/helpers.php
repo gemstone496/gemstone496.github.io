@@ -1,15 +1,22 @@
 <?php
-
 /**
- * renderer for repeated layouts. 
- * work in progress to figure out how to do proper layouts, for now i can't use a yield
- * layouts just are for dedicated code segments (head, header, footer, etc) not a full-page spread
- * @param string $style the name of the layout to include (e.g. `footer_std` or `head`)
- * @param array $args any args used by the layout. build layouts so required args have defaults!
+ * dumps supplied files into an ordered list
+ * @param array $files the array of all files to dump
+ * @param array $exclude (optional) the array of files included in the list which should not be dumped
+ * @return string the html markup for an ordered list of the specified files
  */
-function render_layout(string $style, array $render_args = []): void {
-  $layout_path = find_asset("layouts").$style.'.html.php';
-  include $layout_path;
+function dump(array $files, array $exclude = []): string {
+  $printout = "<ol>";
+  foreach ($files as $file) {
+    if (!in_array($file, $exclude)) {
+      $printout .= "<li><a href=$file>";
+      $printout .= strip_filename($file);
+      $printout .= "</a></li>";
+    }
+  }
+  $printout .= "</ol>";
+
+  return $printout;
 }
 
 /**
@@ -76,23 +83,27 @@ function find_asset(string $dirname = "assets"): string {
 }
 
 /**
- * dumps supplied files into an ordered list
- * @param array $files the array of all files to dump
- * @param array $exclude (optional) the array of files included in the list which should not be dumped
- * @return string the html markup for an ordered list of the specified files
+ * reads data from a specified .json file on the server
+ * @param mixed $path the full path to the file (use path generation methods elsewhere!!)
  */
-function dump(array $files, array $exclude = []): string {
-  $printout = "<ol>";
-  foreach ($files as $file) {
-    if (!in_array($file, $exclude)) {
-      $printout .= "<li><a href=$file>";
-      $printout .= strip_filename($file);
-      $printout .= "</a></li>";
-    }
-  }
-  $printout .= "</ol>";
+function read_data($path) {
+  $fp = fopen($path, "r");
+    $json = fread($fp, filesize($path));
+    $content = json_decode($json,true);
+  fclose($fp);
+  return $content;
+}
 
-  return $printout;
+/**
+ * renderer for repeated layouts. 
+ * work in progress to figure out how to do proper layouts, for now i can't use a yield
+ * layouts just are for dedicated code segments (head, header, footer, etc) not a full-page spread
+ * @param string $style the name of the layout to include (e.g. `footer_std` or `head`)
+ * @param array $args any args used by the layout. build layouts so required args have defaults!
+ */
+function render_layout(string $style, array $render_args = []): void {
+  $layout_path = find_asset("layouts").$style.'.html.php';
+  include $layout_path;
 }
 
 /**
@@ -102,6 +113,15 @@ function dump(array $files, array $exclude = []): string {
  */
 function strip_filename(string $filename): string {
   return ucfirst(preg_replace("/[_-]/", " ", preg_replace("/\.(\w*)/", "", basename($filename))));
+}
+
+/**
+ * strips the provided string input from client (for form handling)
+ * @param string $input the client's input
+ * @return string the stripped, html_safe version of input
+ */
+function strip_input(string $input): string {
+  return htmlspecialchars($input);
 }
 
 /**

@@ -1,35 +1,42 @@
 /* Dark mode (light mode?)!! */
 .dark-mode {
-  background-color: #202022;
-  color: white;
+  --theme-color: #aab0f0;
+  --btn-fade-color: #aab0f0c0;
+  --link-color: #aab0f0;
+  --link-fade-color: #464e94a0; /* softer link color, esp for visitation fades */
+  --hglt-color: #e39cbf;
+  --abort-color: #ff6a6a;
 
-  a:link {
-    color: #b1caff;
-    text-decoration: none;
-  } a:visited {
-    color: #9ebaf8;
-    text-decoration: none;
-  } a:hover {
-    color: #e0a5a5;
-    text-decoration: underline;
+  --bkgd-color: #202022;
+  --frgd-color: #f1f1f1;
+  --off-bkgd: #303033;
+
+  --theme-color: #aab0f0;
+  --hglt-color: #e39cbf;
+  --btn-fade-color: #aab0f0c0;
+  --abort-color: #e98282;
+
+  a:visited {
+    color: var(--btn-fade-color);
   }
   nav {
-    background-color: #303033;
+    background-color: var(--off-bkgd);
     color: white;
   }
   footer {
-    background-color: #202022;
+    background-color: var(--bkgd-color);
     color: white;
   }
   article {
-    background-color: #28282b;
+    background-color: var(--off-bkgd);
   }
   .button {
-    background-color: #00000000;
-    border-color: #e0a5a5;
-    color: #e0a5a5;
+    background-color: var(--bkgd-color);
+    border-color: var(--theme-color);
+    color: var(--hglt-color);
   } .button:hover:enabled {
-    background-color: #b56e6e;
-    color: #310c0c;
+    background-color: var(--theme-color);
+    border-color: var(--hglt-color);
+    color: var(--off-bkgd);
   }
 }

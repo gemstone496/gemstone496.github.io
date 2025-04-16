@@ -3,19 +3,19 @@ include_once "../assets/php/helpers.php";
 
 $layout_args = [
   "type" => "Tutorial",
-  "time" => "3",
-  "special_assets" => ["login_page"]
+  "time" => "5",
+  "special_assets" => ["login_page"],
+  "dark_button" => true
 ];
 ?>
 <!DOCTYPE html>
 <html>
 <?= render_layout("head", $layout_args) ?>
-</head>
-<body>
+<body class="dark-mode">
 
 <h2>Modal Login Form</h2>
 
-<button onclick="showPopup('login-popup')" style="width:auto;">Login</button>
+<button class="login" onclick="showPopup('login-popup')" style="width:auto;">Login</button>
 
 <div id="login-popup" class="modal">
   
@@ -30,22 +30,20 @@ $layout_args = [
         <input type="text" placeholder="Enter Username" name="uname" required>
       <label for="pwd"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pwd" required>
-      <button type="submit">Login</button>
+      <button class="login" type="submit">Login</button>
       <label>
         <input type="checkbox" name="remember"> Remember me
       </label>
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
+    <div class="container footer">
       <button type="button" class="hide cancelbtn">Cancel</button>
       <span class="psw"><a href="#">Forgot password?</a></span>
     </div>
   </form>
 </div>
 
-<script>
-
-</script>
+<?= render_layout("footer_std", $layout_args); ?>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 include_once "../assets/php/helpers.php";
 $layout_args = [
   "type" => "Tutorial",
-  "time" => "3",
+  "time" => "5",
   "home" => "../start_page.html.php"
 ];
 
@@ -20,7 +20,7 @@ $tutorials = glob("*.*");
   <?= dump($tutorials, [basename(__FILE__)]); ?>
 </div>
 
-<?php render_layout(
+<?= render_layout(
   "footer_std",
   $layout_args
 ); ?>

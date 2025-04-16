@@ -17,10 +17,10 @@ $LEVELS = glob("*.*");
 
 <div>
   <button id="dark-button" class="button" onclick="darkToggle()">Light Mode</button>
-  <?= dump($LEVELS, [basename(__FILE__)]); ?>
+  <?= dump($LEVELS, [basename(__FILE__), "profile.html.php"]); ?>
 </div>
 
-<?php render_layout(
+<?= render_layout(
   "footer_std",
   $layout_args
 ); ?>

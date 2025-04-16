@@ -4,7 +4,7 @@ $layout_args = [
   "type" => "Homework 9",
   "dark_button" => true,
   "refs" => [],
-  "tut_time" => 3,
+  "tut_time" => 5,
   "tech_time" => 5,
   "cr_time" => 0
 ];

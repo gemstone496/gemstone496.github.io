@@ -1,6 +1,6 @@
 <?php 
 include_once '../assets/php/helpers.php';
-include_once '../assets/php/lab2.php';
+include_once '../assets/php/login.php';
 
 $layout_args = [
   "type" => "Admin",
@@ -16,7 +16,7 @@ $layout_args = [
 
 <div>
 <div id="user-count">
-  <?= count_users("users.txt"); ?>
+  <?= count_users("users.json"); ?>
 </div>
 <br><button class='button' 
     onclick='updateElement("<?= find_asset("layouts")."user_count.html.php" ?>", "user-count")'>

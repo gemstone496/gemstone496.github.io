@@ -1,14 +1,15 @@
 <?php
-include_once "../helpers.php";
+include_once "../assets/php/helpers.php";
+include_once "../assets/php/login.php";
 $layout_args = [
   "type" => "Profile",
-  "home" => "../../../".($_POST["homelink"] ?? "technical/login").".html.php"
+  "home" => "../../../".$_POST["homelink"].".html.php"
 ];
 ?>
 
 <html>
 <?= render_layout("head", $layout_args) ?>
-<body class="dark-mode">
+<body>
 
 <?php
 $output = "../../../output/users.json";
@@ -21,8 +22,8 @@ if (file_exists($output)) {
   $users = [];
 }
 
-$uname = htmlspecialchars($_POST["uname"]);
-$pwd = htmlspecialchars($_POST["pwd"]);
+$uname = $_POST["uname"];
+$pwd = $_POST["pwd"];
 if ($users["uname"] == null || $users["uname"] == $pwd) {
   if ($users["uname"] == null) {
     $users = array_merge($users, [$uname => $pwd]);

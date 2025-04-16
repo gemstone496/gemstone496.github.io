@@ -1,11 +1,28 @@
 /**
  * @param {String} popupId the id of the popup to show
  */
-function showPopup(popupId) {
+function showPopup(popupId, popupForm, mode) {
   // Get the popup
   let popup = document.getElementById(popupId);
-  let activated = popup.dataset.activated ?? false;
+  popup.dataset.mode = mode;
+  document.getElementById(popupForm).action = mode === "signup" ? popup.dataset.signup : popup.dataset.login;
+  popup.style.display="block";
+    
+  // show or hide signup elements accordingly
+  let signups = document.getElementsByClassName("signup-only");
+  for (let signup of signups) {
+    switch (mode) {
+      case "login":
+        signup.style.display = "none";
+        break;
+      case "signup":
+        signup.style.display = "block";
+        break;
+    }
+  }
 
+  // activate first pop up
+  let activated = popup.dataset.activated ?? false;
   if (!activated) {
     popup.dataset.activated = true;
     // When the user clicks anywhere outside of the modal, close it
@@ -21,9 +38,10 @@ function showPopup(popupId) {
         popup.style.display = "none";
       }
     }
-    
   }
+}
 
-  
-  popup.style.display='block';
+function validatePasswords(popupId) {
+  return document.getElementById(popupId).dataset.mode == 'signup' ?
+   document.getElementById("pwd").value === document.getElementById("pwd-chk").value : true;
 }
