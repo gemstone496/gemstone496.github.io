@@ -38,5 +38,7 @@
     background-color: var(--theme-color);
     border-color: var(--hglt-color);
     color: var(--off-bkgd);
+  } a.button:hover {
+    color: var(--hglt-color)
   }
 }

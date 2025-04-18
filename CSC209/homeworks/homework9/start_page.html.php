@@ -6,7 +6,7 @@ $layout_args = [
   "refs" => [],
   "tut_time" => 5,
   "tech_time" => 5,
-  "cr_time" => 0
+  "cr_time" => 4
 ];
 ?>
 <html>
@@ -15,8 +15,11 @@ $layout_args = [
 
 <body class="dark-mode">
 <div>
-  <a class="button" href="#">Lab 1</a>  <a class="button" href="#">Lab 2</a><br><br>
-  <a class="button" href="./tutorials/tutorial.html.php">Tutorial</a>  <a class="button" href="./technical/tech.html.php">Technical</a><br><br>
+  <a class="button" href="./lab1/login.html">Lab 1</a>
+  <a class="button" href="./lab2/login.html.php">Lab 2</a><br><br>
+  <a class="button" href="./tutorials/tutorial.html.php">Tutorial</a>
+  <a class="button" href="./technical/tech.html.php">Technical</a>
+  <a class="button" href="./creative/login.html.php">Creative</a><br><br>
 </div>
 
 <?php 

@@ -3,16 +3,17 @@ include_once "../assets/php/helpers.php";
 include_once "../assets/php/login.php";
 $layout_args = [
   "type" => "Profile",
-  "home" => "../../../".($_POST["homelink"] ?? "technical/login").".html.php"
+  "home" => "login.html.php",
+  "dark_button" => true
 ];
 ?>
 
 <html>
 <?= render_layout("head", $layout_args) ?>
-<body>
+<body class="dark-mode">
 
 <?php
-$output = "../../../output/users.json";
+$output = "../output/users.json";
 if (file_exists($output)) {
   $fp = fopen($output, "r");
     $json = fread($fp, filesize($output));

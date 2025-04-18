@@ -1,3 +1,12 @@
+function removeUser(pageURL, uname) {
+  let request = new XMLHttpRequest();
+  request.onload = function() {
+    document.getElementById("user-list").innerHTML = this.responseText;
+  }
+  request.open("GET", pageURL + "?uname=" + uname);
+  request.send();
+}
+
 /**
  * @param {String} popupId the id of the popup to show
  */

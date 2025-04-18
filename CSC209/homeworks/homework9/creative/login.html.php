@@ -3,13 +3,23 @@ include_once "../assets/php/helpers.php";
 include_once "../assets/php/login.php";
 
 $layout_args = [
-  "type" => "Technical",
-  "time" => "5",
+  "type" => "Creative",
+  "time" => "4",
   "special_assets" => ["login_page"],
   "dark_button" => true
 ];
 
-$uname = $pwd = "";
+$msg = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (!validate_login($_POST["uname"], $_POST["pwd"])) {
+    $msg = "<p class='abort'>Username and password do not match!<br></p>";
+  } else if (is_admin($_POST["uname"])) {
+    header("Location: administrator.html.php");
+    die();
+  } else {
+    $msg = "<p>Welcome ".$_POST["uname"]."<br></p>";
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,21 +28,14 @@ $uname = $pwd = "";
 
 <h2>Modal Login Form</h2>
 
-  <?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!validate_login($_POST["uname"], $_POST["pwd"])) {
-      echo "<p class='abort'>Username and password do not match!<br>";
-    } else {
-      echo "<p>Welcome ".$_POST["uname"]."<br>";
-    }
-  } ?>
-</p>
+<?= $msg ?>
 
 <button class="login" onclick="showPopup('login-popup', 'login-form', 'login')" style="width:auto;">Login</button>
 <button class="login" onclick="showPopup('login-popup', 'login-form', 'signup')" style="width:auto;">Sign Up</button>
 
 <div id="login-popup" class="modal"
      data-login="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
-     data-signup="profile.html.php">
+     data-signup="<?= find_asset("php").'labs/save_users.php' ?>">
   
   <form id="login-form" class="modal-content animate" method="post"
         onsubmit="validatePasswords('login-popup')"

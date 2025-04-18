@@ -12,6 +12,16 @@ function count_users(string $filename): int {
 }
 
 /**
+ * is the specified user an admin?
+ * @param string $uname username to look up
+ * @return bool Y/N is uname in the set of admins
+ */
+function is_admin(string $uname): bool {
+  $admins = read_data(find_asset("output").'admin.json');
+  return $admins && in_array($uname, $admins);
+}
+
+/**
  * do my inputs match my outputs? let's find out!
  * @param string $username raw user input (to be escaped)
  * @param string $password raw password to match
