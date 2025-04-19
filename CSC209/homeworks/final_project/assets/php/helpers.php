@@ -1,4 +1,6 @@
 <?php
+declare(strict_types= 1);
+
 /**
  * finds the asset folder and returns the pathname to the specified subfolder
  * @param string $dirname the name of the directory in assets to search for
@@ -30,7 +32,7 @@ function find_asset(string $dirname = "assets"): string {
  */
 function import_stylesheets(array $specials,
                             string $dirname = "stylesheets", 
-                            array $defaults = ["global", "dark_mode"]): string {
+                            array $defaults = ["global"]): string {
   $printout = "";
   $stylesheets = find_asset($dirname);
   $sheetnames = array_merge($defaults, $specials);
@@ -50,7 +52,7 @@ function import_stylesheets(array $specials,
  */
 function import_scripts(array $specials, 
                         string $dirname = "javascript", 
-                        array $defaults = ["helpers"]): string {
+                        array $defaults = ["global"]): string {
   $printout = "";
   $scripts = find_asset($dirname);
   $scriptnames = array_merge($defaults, $specials);
@@ -78,11 +80,11 @@ function read_data($path) {
  * renderer for repeated layouts. 
  * work in progress to figure out how to do proper layouts, for now i can't use a yield
  * layouts just are for dedicated code segments (head, header, footer, etc) not a full-page spread
- * @param string $style the name of the layout to include (e.g. `footer_std` or `head`)
+ * @param string $layout the name of the layout to include (e.g. `footer_std` or `head`)
  * @param array $args any args used by the layout. build layouts so required args have defaults!
  */
-function render_layout(string $style, array $render_args = []): void {
-  $layout_path = find_asset("layouts").$style.'.html.php';
+function render_layout(string $layout, array $content_for = []): void {
+  $layout_path = find_asset("layouts").$layout.'.php';
   include $layout_path;
 }
 
