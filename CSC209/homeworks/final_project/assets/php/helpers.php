@@ -97,7 +97,13 @@ function render_layout(string $layout, array $content_for = []): void {
  * @return string the cleaned and stripped readable filename
  */
 function strip_filename(string $filename): string {
-  return ucfirst(preg_replace("/[_-]/", " ", preg_replace("/\.(\w*)/", "", basename($filename))));
+  return ucfirst( # capitalize first letter
+    preg_replace("/[_-]/", " ",  # delineators swap to spaces
+      preg_replace("/^[0-9]+[_-]/","", # clean page numbers/ch numbers
+        preg_replace("/\.(\w*)/", "", basename($filename)) # clean file suffixes
+      )
+    )
+  );
 }
 
 /**
