@@ -9,26 +9,22 @@
 </head>
 <body>
   <header>
-    <nav class="nav-bar">
-      <button class="nav">HOME</button>
-      <button class="nav">ABOUT</button>
-      <button class="nav">ARCHIVE</button>
-      <button class="nav">CAST</button>
+    <nav class="menu">
+      <a class="nav" href="<?=find_asset("comic/comic.html.php")?>">HOME</a>
+      <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a></button>
+      <a class="nav" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
     </nav>
   </header>
   <div id="content">
     <?= $content_for["content"] ?? "" ?>
   </div>
   <footer>
-    <article>
-      <nav class="nav-bar">
-        <button class="nav">HOME</button>
-        <button class="nav">ABOUT</button>
-        <button class="nav">ARCHIVE</button>
-        <button class="nav">CAST</button>
-      </nav>
-      <div>&copy;Jade Lilian Palosky 2025</div>
-    </article>
+    <nav class="menu">
+      <a class="nav" href="<?=find_asset("comic/comic.html.php")?>">HOME</a>
+      <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a></button>
+      <a class="nav" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
+    </nav>
+    <div>&copy;Jade Lilian Palosky 2025</div>
   </footer>
 </body>
 </html>

@@ -2,7 +2,7 @@
 include 'helpers.php';
 
 /**
- * @param assetname subfolder of assets to search for images in (default `assets`)
+ * @param string $asset_name subfolder of assets to search for images in (default `assets`)
  */
 function asset_dirsearch(string $asset_name = "assets") {
   $paths = glob(find_asset($asset_name).'*', GLOB_ONLYDIR);
@@ -10,21 +10,21 @@ function asset_dirsearch(string $asset_name = "assets") {
 }
 
 /**
- * @param files_to_fetch the list of directories containing the desired files
- *                       each directory will correspond to a column in the 2d array returned
+ * @param array $files_to_fetch the list of directories containing the desired files.
+ * Each directory will correspond to a column in the 2d array returned
  */
 function fetch_files(array $files_to_fetch) {
-  $files = array();
+  $files = [];
   foreach($files_to_fetch as $path) {
-    array_push($files, glob($path.'/*'));
+    array_push($files, glob("$path/*"));
   }
   return $files;
 }
 
 /**
  * dumps all the images from the array
- * @param imgs the array of image filepaths to dump
- * @param classifier the group name of the images (default `bonfire`)
+ * @param array $imgs the array of image filepaths to dump
+ * @param string $classifier the group name of the images (default `bonfire`)
  */
 function image_dump(array $imgs, string $classifier = 'bonfire') {
   foreach ($imgs as $img) {
@@ -34,8 +34,8 @@ function image_dump(array $imgs, string $classifier = 'bonfire') {
 
 /**
  * generates slideshow from supplied files
- * @param imgs the array of image filepaths to use for the slides
- * @param classifier the group name of the images (default `bonfire`)
+ * @param array $imgs the array of image filepaths to use for the slides
+ * @param string $classifier the group name of the images (default `bonfire`)
  */
 function gen_slides(array $imgs, string $classifier = 'bonfire') {
   $printout = "";
@@ -55,7 +55,7 @@ function gen_slides(array $imgs, string $classifier = 'bonfire') {
 
 /**
  * generates clickable dots to highlight which image is selected
- * @param count the number of images in the slideshow
+ * @param int $count the number of images in the slideshow
  */
 function gen_dots(int $count) {
   $printout = "";
@@ -67,8 +67,8 @@ function gen_dots(int $count) {
 
 /**
  * generates html to insert a set of slideshows so that they can easily be swapped
- * @param slideshows the array different slideshows (each an array of image paths)
- * @param paths the paths to each set of slideshow (for classifying each)
+ * @param array $slideshows the array different slideshows (each an array of image paths)
+ * @param array $paths the paths to each set of slideshow (for classifying each)
  */
 function insert_slideshows(array $slideshows, array $paths) {
 

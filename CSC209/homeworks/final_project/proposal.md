@@ -6,8 +6,8 @@ Project plan: Create a webcomic hosting site that allows an artist to routinely 
 
 ### Priority backlog:
 
-1. Base layout page. Includes image from assets by GET request, corresponding blog post, skeletal menu page
-2. Base archive page, with a dropdown with every page option listed, and a list-style visual below that organizes by the first page of each subsection (e.g. book, chapter, etc).
+1. ~~Base layout page. Includes image from assets by GET request, corresponding blog post, skeletal menu page. Modify archive links to submit chapter and page number by url searchParam instead~~
+2. ~~Base archive page, with a dropdown with every page option listed, and a list-style visual below that organizes by the first page of each subsection (e.g. book, chapter, etc).~~
 3. User login and signup pages (integrate from wk9 hw).
 4. Admin new page upload.
 5. Page comments (single-layer)
@@ -16,8 +16,8 @@ Project plan: Create a webcomic hosting site that allows an artist to routinely 
 8. Cursor tracking
 9. Button scaling, styling, theming. General QoL stuff.
 10. User data tracks last-marked page. Index page automatically reroutes to last-bookmarked.
-11. Be mad at the fact that I probably don't have the time to teach myself how to properly use SQL with MAMP and PHP because that would be a way easier route to organizing comments (not that json isn't acceptable for objects, but at a certain point it simply becomes very difficult to write)
-12. Learn PHP OOP instead
+11. Implement artist page-post data
+12. Learn PHP OOP
 13. Nested comments (reply to other user comments, reply to those). Requires a tree structure where a comment `has_a id`, `has_a user`, `has_a content`, `has_a timestamp`, `has_many comments`.
 14. Users can edit/delete their comments (will mark with an `EDITED` flag or replace content with `DELETED` and freeze content, appropriate to the action taken).
 

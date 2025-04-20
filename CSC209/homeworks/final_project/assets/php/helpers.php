@@ -2,14 +2,14 @@
 declare(strict_types= 1);
 
 /**
- * finds the asset folder and returns the pathname to the specified subfolder
+ * finds the asset and returns the pathname to the specified file or directory
  * @param string $dirname the name of the directory in assets to search for
- * @return string `[../]*assets/$dirname/`, or just `[../]*assets/` if not found
+ * @return string `./[../]*assets/$dirname[/]`, or just `[../]*assets/` if not found
  */
 function find_asset(string $dirname = "assets"): string {
   $wcd = '.';
   for ($i = 0; $i < 5; $i++) { // don't go more than 5 layers up
-    if(is_dir("$wcd/$dirname")) { // if you find the asset here, leave
+    if(file_exists("$wcd/$dirname")) { // if you find the asset here, leave
       break;
     } elseif (is_dir("$wcd/assets")) { // if there's an `assets` folder, go there
       $wcd .= "/assets";
@@ -18,10 +18,13 @@ function find_asset(string $dirname = "assets"): string {
       $wcd .= '/..';
     }
   }
-  if (is_dir("$wcd/$dirname")) {
+  if (file_exists("$wcd/$dirname")) {
     $wcd .= "/$dirname";
   }
-  return "$wcd/";
+  if (is_dir($wcd)) {
+    $wcd .= "/";
+  }
+  return $wcd;
 }
 
 /**

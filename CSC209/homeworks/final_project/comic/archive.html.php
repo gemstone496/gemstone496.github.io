@@ -1,21 +1,14 @@
 <?php
 include_once "../assets/php/helpers.php";
+include_once "../assets/php/comic.php";
 
-$content_for["name"] = "Archive";
-$content_for["assets"] = "archive";
+$content_for["assets"] = ["comic"];
 
 $chapters = glob(find_asset("images/pages"));
-$pages = [];
-foreach($chapters as $chapter) {
-  if (is_dir($chapter)) {
-    $pages[] = glob($chapter);
-  } else if (is_file($chapter)) {
-    $pages[] = [$chapter];
-  }
-}
+$pages = fetch_files($chapters);
 
 # deal with the fucked up indentation it's for formatting raw html
-$content = '
+$content_for["content"] = '
 <h2>Latest Page</h2>
 <p>Check out the latest page <a href="./comic.html.php">here!</a></p>
 <h2>Archive</h2>
@@ -24,17 +17,17 @@ $content = '
   <option value>Select page...</option>';
 for ($i = 0; $i < count($pages); $i++) {
   foreach ($pages[$i] as $page) {
-    $dropdown .= ' 
+    $content_for["content"] .= ' 
   <option value="'.$page.'>'.strip_filename($page).'</option>';
   }
 }
-$dropdown .= '
+$content_for["content"] .= '
 </select>';
 
-$chapters = '
+$content_for["content"] .= '
 <h2>Chapters</h2><hr>';
 for ($i = 0; $i < count($pages); $i++) {
-  $chapters .= '
+  $content_for["content"] .= '
 <div class="storyline-mark">
   <div class="storyline-thumbnail">
     <a href="'.($pages[$i][0]).'">
@@ -47,7 +40,6 @@ for ($i = 0; $i < count($pages); $i++) {
 </div>';
 }
 
-$content_for["content"] = $content;
 ?>
 
 <?= render_layout("main", $content_for);?>
