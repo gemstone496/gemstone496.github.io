@@ -2,7 +2,7 @@
 include_once "../assets/php/helpers.php";
 include_once "../assets/php/comic.php";
 
-$content_for["assets"] = ["comic"];
+$content_for["assets"] = ["archive", "comic"];
 
 $chapters = glob(find_asset("images/pages")."*");
 $pages = fetch_files($chapters);
@@ -34,8 +34,8 @@ for ($i = 0; $i < count($pages); $i++) {
       <img src="'.($pages[$i][0]).'" alt="'.strip_filename($pages[$i][0]).'">
     </a>
   </div>
-  <div class="storyline-header"
-    <a href="'.($pages[$i][0]).'">'.strip_filename($chapters[$i]).'</a><hr>
+  <div class="storyline-header">
+    <a href="./comic.html.php?ch='.$i.'&pg=0">'.strip_filename($chapters[$i]).'</a><hr>
   </div>
 </div>';
 }
