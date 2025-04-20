@@ -1,8 +1,7 @@
 <?php
-include_once "../assets/php/helpers.php";
+include_once "./assets/php/helpers.php";
 
-$content_for["name"] = "About";
-$content_for["content"] = "";
+$content_for["content"] = "<br><p>Lorem Ipsum Dolor Sit Amet</p><br>";
 
 ?>
 
