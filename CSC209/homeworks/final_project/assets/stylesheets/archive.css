@@ -1,0 +1,26 @@
+#archive-select {
+  margin-bottom: 30px;
+}
+
+/* bookmark settings */
+.marks {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0px 15px;
+}
+
+.storyline-mark {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.storyline-mark * {
+  margin: 5px;
+}
+
+.storyline-thumbnail img {
+  max-width: 100px;
+}
+.storyline-header {
+  max-width: fit-content;
+}

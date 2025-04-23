@@ -1,0 +1,82 @@
+/* global styles for all pages */
+:root {
+  --theme-color: #815aae; /* base theme color */
+  --secondary-color: #66444a; /* base secondary color */
+
+  --frgd-color: #101010; /* base foreground */
+  --bkgd-color: #e0e0e3; /* base background */
+  --off-bkgd: #c7c7c7; /* off-color background */
+  
+  /* set base colors, sizing, fonts */
+  background-color: var(--bkgd-color);
+  box-sizing: border-box;
+  color: var(--frgd-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* style the header/footer */
+.vflex-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 15px;
+}
+.logo {
+  color: var(--secondary-color);
+  font-family: Impact, Arial;
+  font-size: 50px;
+  font-weight: 1000;
+  letter-spacing: 10px;
+  line-height: 5px;
+  text-transform: uppercase;
+}
+.menu, .nav {
+  margin: 0px 10px 5px;
+  padding: 10px;
+}
+
+/* style the navigation menu inside header and footers */
+.menu {
+  background: var(--off-bkgd);
+  max-width: fit-content;
+}
+
+/* style links for defaults and also navigation menus*/
+a {
+  color: var(--theme-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--secondary-color);
+}
+a.disabled {
+  cursor: default;
+}
+a.disabled:hover {
+  color: var(--theme-color);
+}
+a.nav:hover {
+  text-shadow: 0px 0px 10px var(--theme-color);
+}
+
+/* cross-page content settings */
+#content {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#copyright {
+  display: flex;
+  flex-direction: row;
+  justify-self: right;
+  font: 12px times;
+}
+
+/* TODO responsive layout */
+/* @media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+} */

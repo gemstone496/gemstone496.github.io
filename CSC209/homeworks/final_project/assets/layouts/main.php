@@ -8,23 +8,24 @@
   <?= import_scripts($content_for["assets"] ?? []) ?>
 </head>
 <body>
-  <header>
+  <header class="vflex-center">
+    <h1 class="logo">Wildfire</h1>
     <nav class="menu">
-      <a class="nav" href="<?=find_asset("comic/comic.html.php")?>">HOME</a>
+      <a class="nav" href="<?=find_asset("comic/pages.html.php")?>">HOME</a>
       <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a></button>
       <a class="nav" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
     </nav>
-  </header>
+  </header><hr>
   <div id="content">
     <?= $content_for["content"] ?? "" ?>
   </div>
-  <footer>
+  <hr><footer class="vflex-center">
     <nav class="menu">
-      <a class="nav" href="<?=find_asset("comic/comic.html.php")?>">HOME</a>
+      <a class="nav" href="<?=find_asset("comic/pages.html.php")?>">HOME</a>
       <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a></button>
       <a class="nav" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
     </nav>
-    <div>&copy;Jade Lilian Palosky 2025</div>
   </footer>
+  <div id="copyright">&copy;2025 Jade Onyx Violet Lilian</div>
 </body>
 </html>
