@@ -11,10 +11,11 @@ Project plan: Create a webcomic hosting site that allows an artist to routinely 
 3. User login and signup pages (integrate from wk9 hw).
 4. Admin new page upload.
 5. Page comments (single-layer)
-6. Cookies to preserve user sessions continuously through page navigation
-7. Live comment updating support (through AJAX or possibly fetch)
-8. Cursor tracking
-9. Button scaling, styling, theming. General QoL stuff.
+6. Cursor tracking
+---
+7. Cookies to preserve user sessions continuously through page navigation
+8. Button scaling, styling, theming. General QoL stuff.
+9. Live comment updating support (through AJAX or possibly fetch)
 10. User data tracks last-marked page. Index page automatically reroutes to last-bookmarked.
 11. Implement artist page-post data
 12. Learn PHP OOP

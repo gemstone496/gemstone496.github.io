@@ -9,11 +9,12 @@
 </head>
 <body>
   <header class="vflex-center">
-    <h1 class="logo">Wildfire</h1>
+    <h1 class="logo">wildfire</h1>
     <nav class="menu">
-      <a class="nav" href="<?=find_asset("comic/pages.html.php")?>">HOME</a>
-      <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a></button>
-      <a class="nav" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
+      <a class="nav hidden" onclick="openMenu(this)">MENU</a>
+      <a class="nav responsive" href="<?=find_asset("comic/pages.html.php")?>">HOME</a>
+      <a class="nav responsive" href="<?=find_asset("about.html.php")?>">ABOUT</a>
+      <a class="nav responsive" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
     </nav>
   </header><hr>
   <div id="content">
@@ -22,7 +23,7 @@
   <hr><footer class="vflex-center">
     <nav class="menu">
       <a class="nav" href="<?=find_asset("comic/pages.html.php")?>">HOME</a>
-      <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a></button>
+      <a class="nav" href="<?=find_asset("about.html.php")?>">ABOUT</a>
       <a class="nav" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
     </nav>
   </footer>

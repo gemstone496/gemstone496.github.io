@@ -1,5 +1,5 @@
 /**
- * Redirects to a specified page
+ * redirects to a specified page
  * @param {String} value the page chapter/number to redirect to
  */
 function setPage(value) {

@@ -80,11 +80,9 @@ function read_data($path) {
 }
 
 /**
- * renderer for repeated layouts. 
- * work in progress to figure out how to do proper layouts, for now i can't use a yield
- * layouts just are for dedicated code segments (head, header, footer, etc) not a full-page spread
- * @param string $layout the name of the layout to include (e.g. `footer_std` or `head`)
- * @param array $args any args used by the layout. build layouts so required args have defaults!
+ * renderer for repeated layouts (header, footer, login pages, etc)
+ * @param string $layout the name of the page's layout (e.g. `main` or `login`)
+ * @param array $args any args used by the layout, by associative array (should all be optional in they layout)
  */
 function render_layout(string $layout, array $content_for = []): void {
   $layout_path = find_asset("layouts").$layout.'.php';
@@ -94,16 +92,16 @@ function render_layout(string $layout, array $content_for = []): void {
 /**
  * strips a supplied filename to human-readable caption
  * @param string $filename the name to strip down
+ * @param bool $cap whether to capitalize the first letter
  * @return string the cleaned and stripped readable filename
  */
-function strip_filename(string $filename): string {
-  return ucfirst( # capitalize first letter
-    preg_replace("/[_-]/", " ",  # delineators swap to spaces
-      preg_replace("/^[0-9]+[_-]/","", # clean page numbers/ch numbers
-        preg_replace("/\.(\w*)/", "", basename($filename)) # clean file suffixes
-      )
+function strip_filename(string $filename, bool $cap = true): string {
+  $stripped = preg_replace("/[_-]/", " ",  # delineators swap to spaces
+    preg_replace("/^[0-9]+[_-]/","", # clean page numbers/ch numbers
+      preg_replace("/\.(\w*)/", "", basename($filename)) # clean file suffixes
     )
   );
+  return $cap ? ucfirst($stripped) : $stripped; # capitalize first letter if appropriate
 }
 
 /**

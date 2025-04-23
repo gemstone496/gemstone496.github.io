@@ -19,7 +19,7 @@ $content_for["content"] = '
 for ($i = 0; $i < count($pages); $i++) {
   for ($j = 0; $j < count($pages[$i]); $j++) {
     $content_for["content"] .= ' 
-  <option value="'.$i.'_'.$j.'">'.strip_filename($pages[$i][$j]).'</option>';
+  <option value="'.$i.'_'.$j.'">'.$i.'.'.($j+1).' '.strip_filename($pages[$i][$j]).'</option>';
   }
 }
 

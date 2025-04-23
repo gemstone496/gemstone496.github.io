@@ -1,0 +1,98 @@
+/* new backdrop? new backdrop. */
+:root {
+  background-color: var(--secondary-color);
+}
+
+/* image smoller */
+.avatar {
+  max-width: 75%;
+}
+
+/* contain it */
+.login-container {
+  align-self: center;
+  background-color: var(--bkgd-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin: 50px;
+  padding: 30px;
+  position: inherit;
+  width: 40%;
+}
+
+/* hide signup-only content for login */
+.login-mode .signup-only {
+  display: none;
+}
+
+/* set form text content */
+.txt-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  line-height: 10pt;
+  padding: 0;
+}
+.form-label {
+  font-size: 8pt;
+  font-weight: 100;
+  opacity: 0.6;
+}
+
+/* control form input fields */
+.full-span {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form-item {
+  border: 2px solid var(--off-frgd);
+  border-radius: 5px;
+  font-size: 10pt;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+/* control form buttons */
+.form-button {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  color: var(--off-bkgd);
+  font-size: 10pt;
+  font-weight: 100;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition-duration: 0.15s;
+}
+.form-button:hover {
+  background-color: var(--bkgd-color);
+  color: var(--off-frgd);
+}
+.cancel-btn {
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  color: var(--off-frgd);
+  font-size: 10pt;
+  font-weight: 100;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition-duration: 0.15s;
+}
+.cancel-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--off-bkgd);
+}
+.space-above {
+  margin-top: 15px;
+}
+
+/* responsive layout */
+@media (max-width: 600px) {
+  .login-container {
+    width: 80%;
+  }
+}
