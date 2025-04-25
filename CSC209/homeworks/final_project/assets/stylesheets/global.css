@@ -1,8 +1,9 @@
 /* global styles for all pages */
 :root {
-  --theme-color: #815aae; /* base theme color */
-  --secondary-color: #66444a; /* base secondary color */
-  --highligher-color: #ff9b9ba0; /* base highlighter */
+  --theme-color: #815aae; /* theme color */
+  --secondary-color: #66444a; /* secondary theme color */
+  --highligher-color: #ff9b9ba0; /* highlighter color */
+  --abort-color: #ff2c2c; /* abort red color */
 
   --frgd-color: #101010; /* base foreground */
   --off-frgd: #444444;
@@ -63,6 +64,17 @@ a.nav:hover {
   margin: 0px 10px 5px;
   padding: 10px;
   text-transform: uppercase;
+}
+
+/* style the profile icon */
+.pfp {
+  border-radius: 50%;
+  max-width: 30px;
+  opacity: 0.75;
+  padding: 0px 10px;
+}
+.hz-spacer {
+  min-width: 10px;
 }
 
 /* style the navigation menu inside header and footers */

@@ -1,3 +1,7 @@
+<?php 
+session_start();
+$user = $_SESSION["user"] ?? "";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +19,10 @@
       <a class="nav responsive" href="<?=find_asset("comic/pages.html.php")?>">HOME</a>
       <a class="nav responsive" href="<?=find_asset("about.html.php")?>">ABOUT</a>
       <a class="nav responsive" href="<?=find_asset("comic/archive.html.php")?>">ARCHIVE</a>
+      <div class="hz-spacer"></div><a class="responsive" href="<?=find_asset($user ? "login/profile.html.php" : "login/login.html.php")?>">
+        <img class="pfp" 
+          src="<?=$user && fetch_pfp($user) ? '' : find_asset("images/pfp_default.png");?>">
+      </a><div class="hz-spacer"></div>
     </nav>
   </header><hr>
   <div id="content">

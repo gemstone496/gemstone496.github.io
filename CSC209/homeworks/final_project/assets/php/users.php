@@ -7,7 +7,7 @@ include_once "helpers.php";
  * @return bool Y/N is uname in the set of admins
  */
 function is_admin(string $uname): bool {
-  $admins = read_data(find_asset("users").'admins.json');
+  $admins = read_data(find_asset("data").'adminlist.json');
   // admins["$uname"] exists iff $uname is admin.
   // stored in associative array for faster lookups.
   // the site has no built-in ways to change admins, they are fixed.
@@ -20,11 +20,11 @@ function is_admin(string $uname): bool {
  * @param string $uname the username to check
  * @return string username's password
  */
-function user_psw(string $uname): string {
+function user_exists(string $uname): string | null {
   $users = glob(find_asset('data/users').'*');
   foreach ($users as $user) {
-    if (strip_filename($user, false) === $uname) {
-      return read_data($user)["psw"];
+    if (strip_filename($user, false) === strip_input($uname)) {
+      return read_data("$user/$uname.json")["password"];
     }
   }
   return null;
@@ -40,5 +40,5 @@ function validate_login(string $username, string $password): bool {
   $username = strip_input($username);
   $password = strip_input($password);
 
-  return $password !== null && $password === user_psw($username);
+  return $password !== null && $password === user_exists($username);
 }

@@ -7,3 +7,4 @@
   <?= import_stylesheets($content_for["assets"] ?? []) ?>
   <?= import_scripts($content_for["assets"] ?? []) ?>
 </head>
+<body>

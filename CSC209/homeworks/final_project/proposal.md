@@ -8,12 +8,12 @@ Project plan: Create a webcomic hosting site that allows an artist to routinely 
 
 1. ~~Base layout page. Includes image from assets by GET request, corresponding blog post, skeletal menu page. Modify archive links to submit chapter and page number by url searchParam instead~~
 2. ~~Base archive page, with a dropdown with every page option listed, and a list-style visual below that organizes by the first page of each subsection (e.g. book, chapter, etc).~~
-3. User login and signup pages (integrate from wk9 hw).
+3. ~~User login and signup pages (integrate from wk9 hw).~~
 4. Admin new page upload.
 5. Page comments (single-layer)
 6. Cursor tracking
 ---
-7. Cookies to preserve user sessions continuously through page navigation
+7. ~~Cookies to preserve user sessions continuously through page navigation~~
 8. Button scaling, styling, theming. General QoL stuff.
 9. Live comment updating support (through AJAX or possibly fetch)
 10. User data tracks last-marked page. Index page automatically reroutes to last-bookmarked.

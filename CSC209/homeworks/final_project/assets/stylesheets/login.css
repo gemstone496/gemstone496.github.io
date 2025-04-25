@@ -41,6 +41,9 @@
   font-weight: 100;
   opacity: 0.6;
 }
+.verifier {
+  color: var(--abort-color);
+}
 
 /* control form input fields */
 .full-span {
@@ -57,7 +60,7 @@
 }
 
 /* control form buttons */
-.form-button {
+.btn {
   background-color: var(--secondary-color);
   border: 2px solid var(--secondary-color);
   border-radius: 5px;
@@ -68,11 +71,11 @@
   padding: 10px;
   transition-duration: 0.15s;
 }
-.form-button:hover {
+.btn:enabled:hover {
   background-color: var(--bkgd-color);
   color: var(--off-frgd);
 }
-.cancel-btn {
+.invert-btn {
   border: 2px solid var(--secondary-color);
   border-radius: 5px;
   color: var(--off-frgd);
@@ -82,12 +85,14 @@
   padding: 10px;
   transition-duration: 0.15s;
 }
-.cancel-btn:hover {
+.invert-btn:enabled:hover {
   background-color: var(--secondary-color);
   color: var(--off-bkgd);
 }
+
+/* this is stupid don't ask questions */
 .space-above {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 /* responsive layout */
