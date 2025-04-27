@@ -16,12 +16,9 @@
   flex-direction: row;
 }
 .storyline-mark * {
-  margin: 5px;
+  padding: 5px;
 }
 
 .storyline-thumbnail img {
   max-width: 100px;
-}
-.storyline-header {
-  max-width: fit-content;
 }

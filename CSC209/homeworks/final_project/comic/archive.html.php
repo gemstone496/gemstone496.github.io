@@ -14,7 +14,7 @@ $content_for["content"] = '
 <h2>Archive</h2>
 <p>Select a page from the dropdown to start reading.</p>
 <select id="archive-select" onchange="setPage(this.value)">
-  <option value>Select page...</option>';
+  <option value="">Select page...</option>';
 
 for ($i = 0; $i < count($pages); $i++) {
   for ($j = 0; $j < count($pages[$i]); $j++) {

@@ -1,4 +1,12 @@
 /**
+ * 
+ * @param {string} url the url to the logout action page
+ */
+function confirmLogout(url) {
+
+}
+
+/**
  * hides or shows the responsive menu items on small screens
  * @param {HTMLElement} element the item clicked to call this
  */

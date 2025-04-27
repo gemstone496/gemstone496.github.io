@@ -6,12 +6,13 @@ session_start();
 if (!isset($_SESSION["user"])) {
   header("Location: ../comic/pages.html.php");
   die();
-} elseif (!is_admin($_SESSION["user"])) {
-  header("Location: ./profile.html.php");
+} elseif (is_admin($_SESSION["user"])) {
+  header("Location: ./admin.html.php");
   die();
 }
 
-$content_for["assets"] = ["admin", "profile"];
+
+$content_for["assets"] = [];
 $content_for["content"] = $_SESSION["user"];
 ?>
 

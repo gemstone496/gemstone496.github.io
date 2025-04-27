@@ -2,10 +2,15 @@
 include_once "../assets/php/helpers.php";
 include_once "../assets/php/users.php";
 
-$content_for["assets"] = ["login"];
-?>
+session_start();
+if (isset($_SESSION["user"])) {
+  header("Location: ./profile.html.php");
+  die();
+}
 
-<?= render_layout("login", $content_for); ?>
+$content_for["assets"] = ["login"];
+
+$content_for["content"] = '
   <div>
     <div class="login-container">
       <div id="login-mode-wrapper" 
@@ -70,17 +75,18 @@ $content_for["assets"] = ["login"];
         
         <form id="cancel" action="../comic/pages.html.php">
           <div class="full-span">
-            <button id="cancel-btn" class="invert-btn"
+            <button id="cancel-btn" class="abort-btn"
                     type="submit">Cancel</button>
           </div>
         </form>
         <span class="txt-center space-above full-span">
-          <div><span id="swap-mode">Don't have an account?</span>
+          <div><span id="swap-mode">Don\'t have an account?</span>
             <a onclick="loginModeSwap(this)">Sign up</a>
           </div>
         </span>
       </div>
     </div>
-  </div>
-</body>
-</html>
+  </div>';
+?>
+
+<?= render_layout("head", $content_for); ?>

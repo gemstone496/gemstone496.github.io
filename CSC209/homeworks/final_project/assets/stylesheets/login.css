@@ -1,6 +1,12 @@
 /* new backdrop? new backdrop. */
-:root {
+body {
   background-color: var(--secondary-color);
+}
+
+/* fix logo */
+.logo {
+  color: var(--secondary-color);
+  font-size: 50px;
 }
 
 /* image smoller */
@@ -75,19 +81,20 @@
   background-color: var(--bkgd-color);
   color: var(--off-frgd);
 }
-.invert-btn {
-  border: 2px solid var(--secondary-color);
+.abort-btn {
+  background-color: var(--off-frgd);
+  border: 2px solid var(--abort-color);
   border-radius: 5px;
-  color: var(--off-frgd);
+  color: var(--abort-color);
   font-size: 10pt;
   font-weight: 100;
   margin-bottom: 10px;
   padding: 10px;
   transition-duration: 0.15s;
 }
-.invert-btn:enabled:hover {
-  background-color: var(--secondary-color);
-  color: var(--off-bkgd);
+.abort-btn:enabled:hover {
+  background-color: var(--abort-color);
+  color: var(--bkgd-color);
 }
 
 /* this is stupid don't ask questions */

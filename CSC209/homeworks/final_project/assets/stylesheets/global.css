@@ -3,28 +3,33 @@
   --theme-color: #815aae; /* theme color */
   --secondary-color: #66444a; /* secondary theme color */
   --highligher-color: #ff9b9ba0; /* highlighter color */
-  --abort-color: #ff2c2c; /* abort red color */
+  --abort-color: #931f1f; /* abort red color */
 
   --frgd-color: #101010; /* base foreground */
   --off-frgd: #444444;
   --bkgd-color: #e0e0e3; /* base background */
   --off-bkgd: #c7c7c7; /* off-color background */
   
-  /* set base colors, sizing, fonts */
+}
+
+/* set base colors, sizing, fonts */
+body {
   background-color: var(--bkgd-color);
   box-sizing: border-box;
   color: var(--frgd-color);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* style links for defaults and also navigation menus*/
 a {
   color: var(--theme-color);
   text-decoration: none;
+  transition-duration: 0.15s;
 }
 a:hover {
   color: var(--secondary-color);
-  transition-duration: 0.25s;
 }
 a.disabled {
   cursor: default;
@@ -32,70 +37,133 @@ a.disabled {
 a.disabled:hover {
   color: var(--theme-color);
 }
+/* nav links*/
 a.nav:hover {
   text-shadow: 0px 0px 10px var(--theme-color);
-  transition-duration: 0.25s;
+}
+/* style the logout button */
+.abort-link a {
+  color: var(--abort-color);
+}
+.abort-link:hover a {
+  color: var(--bkgd-color);
+  cursor: pointer;
 }
 
 /* global content settings for pages */
 #content {
-  margin-left: 30px;
-  margin-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 /* style the header/footer */
 .vflex-center {
   align-items: center;
+  align-content: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0px 15px;
+  justify-items: center;
+  padding: 15px 0px;
+  width: 100%;
+}
+.secondary-color {
+  background-color: var(--secondary-color);
+  color: var(--bkgd-color);
 }
 .logo {
-  color: var(--secondary-color);
+  color: var(--off-bkgd);
   font-family: Impact, Arial;
-  font-size: 50px;
+  font-size: 75px;
   font-weight: 1000;
   letter-spacing: 10px;
   line-height: 5px;
   text-transform: uppercase;
 }
-.nav {
-  margin: 0px 10px 5px;
-  padding: 10px;
-  text-transform: uppercase;
-}
-
-/* style the profile icon */
-.pfp {
-  border-radius: 50%;
-  max-width: 30px;
-  opacity: 0.75;
-  padding: 0px 10px;
-}
-.hz-spacer {
-  min-width: 10px;
-}
 
 /* style the navigation menu inside header and footers */
 .menu {
+  align-content: center;
   align-items: center;
   background: var(--off-bkgd);
   display: flex;
   justify-content: center;
+  justify-items: center;
+  margin: 10px;
   max-width: fit-content;
-  padding-top: 5px;
+  padding: 10px 0px;
 }
 .menu .hidden {
   display: none;
+}
+.nav {
+  font-size: 20px;
+  margin: 0px 10px;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+/* style the hover-dropdown on pfp */
+.dropdown {
+  align-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.dropdown-content {
+  background-color: var(--bkgd-color);
+  box-shadow: 0px 2px 2px var(--off-frgd);
+  display: none;
+  text-transform: capitalize;
+  position: absolute;
+  top: 45px;
+  right: -10px;
+  width: 100px;
+}
+.dropdown-option {
+  display: flex;
+  padding: 10px;
+  width: 80px;
+}
+.dropdown-option:hover {
+  background-color: var(--off-bkgd);
+  color: var(--theme-color);
+}
+.dropdown-option.abort-link:hover {
+  background-color: var(--abort-color);
+}
+.dropdown:hover .dropdown-content, .dropdown-content:hover {
+  align-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.off-frgd {
+  color: var(--off-frgd);
+}
+
+/* style the profile icon */
+.pfp-thumbnail {
+  border-radius: 50%;
+  max-width: 25px;
+  opacity: 0.75;
+}
+.hz-vt-spacer {
+  min-width: 10px;
+  min-height: 10px;
 }
 
 /* copyright settings */
 #copyright {
   display: flex;
   flex-direction: row;
-  justify-self: right;
+  justify-content: right;
   font: 12px times;
+
+  padding: 10px 0px;
+  width: 100%;
 }
 
 /* responsive layout (menu turns into hide/show on small screens) */
@@ -109,5 +177,8 @@ a.nav:hover {
   }
   .menu .responsive {
     display: none;
+  }
+  .menu .responsive.pfp-thumbnail {
+    margin-right: 0px;
   }
 }

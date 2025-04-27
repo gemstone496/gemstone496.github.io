@@ -88,7 +88,7 @@ function read_data($path) {
  * @param string $layout the name of the page's layout (e.g. `main` or `login`)
  * @param array $args any args used by the layout, by associative array (should all be optional in they layout)
  */
-function render_layout(string $layout, array $content_for = []): void {
+function render_layout(string $layout, array $content = []): void {
   $layout_path = find_asset("layouts").$layout.'.php';
   include $layout_path;
 }
