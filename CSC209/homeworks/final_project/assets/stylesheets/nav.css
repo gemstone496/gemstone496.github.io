@@ -1,0 +1,58 @@
+/* style the navigation menu inside header and footers */
+.menu {
+  align-content: center;
+  align-items: center;
+  background: var(--off-bkgd);
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin: 10px;
+  max-width: fit-content;
+  padding: 10px 0px;
+}
+.menu .hidden {
+  display: none;
+}
+.nav {
+  font-size: 20px;
+  margin: 0px 10px;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+/* style the hover-dropdown on pfp */
+.dropdown {
+  align-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.dropdown-content {
+  background-color: var(--bkgd-color);
+  box-shadow: 0px 2px 2px var(--off-frgd);
+  display: none;
+  text-transform: capitalize;
+  position: absolute;
+  top: 45px;
+  right: -10px;
+  width: 100px;
+}
+.dropdown-option {
+  display: flex;
+  padding: 10px;
+  width: 80px;
+}
+.dropdown-option:hover {
+  background-color: var(--off-bkgd);
+  color: var(--theme-color);
+}
+.dropdown-option.abort-link:hover {
+  background-color: var(--abort-color);
+}
+.dropdown:hover .dropdown-content, .dropdown-content:hover {
+  align-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}

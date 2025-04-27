@@ -1,0 +1,91 @@
+.modal {
+  backdrop-filter: blur(6px); /* https://stackoverflow.com/questions/27583937/how-can-i-make-a-css-glass-blur-effect-work-for-an-overlay */
+  
+  background-color: var(--frgd-color); /* Fallback color */
+  background-color: var(--frgd-transparent);
+  display: none; /* definition of modal */
+  height: 100%;
+  padding-bottom: 20%; /* 10% from top*/
+  overflow: auto; /* Enable scroll if needed */
+  position: fixed; /* Stay in place */
+  top: 0px;
+  width: 100%;
+  z-index: 1; /* Sit on top */
+}
+.modal.show {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+/* settings for the modal content wrapper */
+.modal-content {
+  background-color: var(--off-bkgd);
+  border-radius: 5px;
+  color: var(--off-frgd);
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+/* settings for the modal header */
+.modal-header {
+  border-bottom: 1px solid var(--off-frgd);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 20px 0px;
+  width: 360px;
+}
+.modal-header .modal-title {
+  align-self: flex-start;
+  font-size: 20px;
+  line-height: 0.8em;
+  justify-self: flex-start;
+}
+.modal-header .modal-close {
+  align-self: flex-start;
+  cursor: pointer;
+  font-size: 30px;
+  justify-self: flex-end;
+}
+/* settings for modal body */
+.modal-body {
+  font-size: small;
+  font-weight: 400;
+  padding: 20px;
+}
+/* settings for modal footer */
+.modal-footer {
+  align-items: end;
+  align-content: end;
+  border-top: 1px solid var(--off-frgd);
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px;
+}
+.btn {
+  margin: 10px;
+  max-height: 40px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+/*
+ * add zoom animation 
+ * pulled directly from the hw9 [w3schools tutorial](https://www.w3schools.com/howto/howto_css_login_form.asp) on modals
+ */
+.animate {
+  -webkit-animation: animatezoom 0.3s;
+  animation: animatezoom 0.3s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}

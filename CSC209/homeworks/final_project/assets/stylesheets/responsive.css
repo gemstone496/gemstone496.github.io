@@ -1,0 +1,23 @@
+/* responsive layout (menu turns into hide/show on small screens) */
+@media (max-width: 600px) {
+  /* settings for nav bar */
+  .menu {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .menu .hidden {
+    display: block;
+  }
+  .menu .responsive {
+    display: none;
+  }
+  /* never show the hover-dropdown on small screens */
+  .dropdown:hover .dropdown-content, .dropdown-content:hover {
+    display: none;
+  }
+
+  /* settings for login page */
+  .login-container {
+    width: 80%;
+  }
+}

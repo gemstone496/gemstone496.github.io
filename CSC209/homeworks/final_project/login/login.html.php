@@ -75,7 +75,7 @@ $content_for["content"] = '
         
         <form id="cancel" action="../comic/pages.html.php">
           <div class="full-span">
-            <button id="cancel-btn" class="abort-btn"
+            <button id="cancel-btn" class="btn abort-btn"
                     type="submit">Cancel</button>
           </div>
         </form>

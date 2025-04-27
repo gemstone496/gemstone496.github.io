@@ -5,3 +5,5 @@ https://www.w3schools.com/css/css_text_shadow.asp --- text shadow
 https://stackoverflow.com/questions/15935318/smooth-scroll-to-top --- scroll to top js
 https://stackoverflow.com/questions/34349543/how-to-save-value-in-session-in-php-and-retrieve --- how to use sessions
 https://www.w3schools.com/howto/howto_css_dropdown.asp --- hover dropdown
+https://stackoverflow.com/questions/27583937/how-can-i-make-a-css-glass-blur-effect-work-for-an-overlay --- blur modal background
+https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp --- scrollbar

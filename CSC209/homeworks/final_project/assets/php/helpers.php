@@ -34,15 +34,17 @@ function find_asset(string $dirname = "assets"): string {
 /**
  * @param array $specials specialized stylesheets to import. DO NOT include `.css`, i will do that for you
  * @param string $dirname the directory name to search for (by default searches for `stylesheets`)
- * @param array $defaults the file names (name only, no suffix) to import by default
+ * @param array $defaults the file names (name only, no suffix) to import by default, FIRST!!
+ * @param array $responsive the stylesheet for responsive pages allowing mobile viewing, LAST!!
  * @return string the html markup for the page stylesheet link tags
  */
 function import_stylesheets(array $specials,
                             string $dirname = "stylesheets", 
-                            array $defaults = ["global"]): string {
+                            array $defaults = ["global"],
+                            array $responsive = ["responsive"]): string {
   $printout = "";
   $stylesheets = find_asset($dirname);
-  $sheetnames = array_merge($defaults, $specials);
+  $sheetnames = array_merge($defaults, $specials, $responsive); // always import responsive sheets last
   foreach ($sheetnames as $file) {
     if (is_file("$stylesheets$file.css")) {
       $printout .= "<link rel='stylesheet' href='$stylesheets$file.css'>";

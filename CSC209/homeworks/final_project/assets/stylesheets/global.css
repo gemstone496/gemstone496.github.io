@@ -3,16 +3,17 @@
   --theme-color: #815aae; /* theme color */
   --secondary-color: #66444a; /* secondary theme color */
   --highligher-color: #ff9b9ba0; /* highlighter color */
-  --abort-color: #931f1f; /* abort red color */
+  --abort-color: #9f4646; /* abort red color */
 
   --frgd-color: #101010; /* base foreground */
   --off-frgd: #444444;
+  --frgd-transparent: #101010aa;
   --bkgd-color: #e0e0e3; /* base background */
   --off-bkgd: #c7c7c7; /* off-color background */
   
 }
 
-/* set base colors, sizing, fonts */
+/* set base colors, sizing, fonts, also destroy body margin and paddings */
 body {
   background-color: var(--bkgd-color);
   box-sizing: border-box;
@@ -22,7 +23,18 @@ body {
   padding: 0px;
 }
 
-/* style links for defaults and also navigation menus*/
+/* 
+ * Hide scrollbar for Chrome, Safari and Opera 
+ * https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
+ */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+/* style links for defaults (because link defaults are horrifying) */
 a {
   color: var(--theme-color);
   text-decoration: none;
@@ -41,36 +53,13 @@ a.disabled:hover {
 a.nav:hover {
   text-shadow: 0px 0px 10px var(--theme-color);
 }
-/* style the logout button */
-.abort-link a {
-  color: var(--abort-color);
-}
-.abort-link:hover a {
-  color: var(--bkgd-color);
-  cursor: pointer;
-}
 
-/* global content settings for pages */
+/* global content settings for all pages */
 #content {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 30px;
 }
 
-/* style the header/footer */
-.vflex-center {
-  align-items: center;
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-items: center;
-  padding: 15px 0px;
-  width: 100%;
-}
-.secondary-color {
-  background-color: var(--secondary-color);
-  color: var(--bkgd-color);
-}
+/* logo settings for all pages */
 .logo {
   color: var(--off-bkgd);
   font-family: Impact, Arial;
@@ -81,104 +70,26 @@ a.nav:hover {
   text-transform: uppercase;
 }
 
-/* style the navigation menu inside header and footers */
-.menu {
-  align-content: center;
-  align-items: center;
-  background: var(--off-bkgd);
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  margin: 10px;
-  max-width: fit-content;
-  padding: 10px 0px;
-}
-.menu .hidden {
-  display: none;
-}
-.nav {
-  font-size: 20px;
-  margin: 0px 10px;
+/* control buttons */
+.btn {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  color: var(--off-bkgd);
   padding: 10px;
-  text-transform: uppercase;
+  transition-duration: 0.15s;
 }
-
-/* style the hover-dropdown on pfp */
-.dropdown {
-  align-content: flex-end;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.dropdown-content {
+.btn:enabled:hover {
   background-color: var(--bkgd-color);
-  box-shadow: 0px 2px 2px var(--off-frgd);
-  display: none;
-  text-transform: capitalize;
-  position: absolute;
-  top: 45px;
-  right: -10px;
-  width: 100px;
-}
-.dropdown-option {
-  display: flex;
-  padding: 10px;
-  width: 80px;
-}
-.dropdown-option:hover {
-  background-color: var(--off-bkgd);
-  color: var(--theme-color);
-}
-.dropdown-option.abort-link:hover {
-  background-color: var(--abort-color);
-}
-.dropdown:hover .dropdown-content, .dropdown-content:hover {
-  align-content: flex-end;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-}
-
-.off-frgd {
   color: var(--off-frgd);
 }
-
-/* style the profile icon */
-.pfp-thumbnail {
-  border-radius: 50%;
-  max-width: 25px;
-  opacity: 0.75;
+/* anything that closes a popup or aborts an action */
+.abort-btn {
+  background-color: var(--off-bkgd);
+  border: 2px solid var(--abort-color);
+  color: var(--abort-color);
 }
-.hz-vt-spacer {
-  min-width: 10px;
-  min-height: 10px;
-}
-
-/* copyright settings */
-#copyright {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  font: 12px times;
-
-  padding: 10px 0px;
-  width: 100%;
-}
-
-/* responsive layout (menu turns into hide/show on small screens) */
-@media (max-width: 500px) {
-  .menu {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
-  .menu .hidden {
-    display: block;
-  }
-  .menu .responsive {
-    display: none;
-  }
-  .menu .responsive.pfp-thumbnail {
-    margin-right: 0px;
-  }
+.abort-btn:enabled:hover {
+  background-color: var(--abort-color);
+  color: var(--bkgd-color);
 }

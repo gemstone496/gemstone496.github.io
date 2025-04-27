@@ -2,9 +2,26 @@
 session_start();
 $user = $_SESSION["user"] ?? "";
 
-$layout_content["assets"] = $content["assets"] ?? [];
+$layout_content["assets"] = array_merge(["main", "modal", "nav"], $content["assets"] ?? []);
 
 $layout_content["content"] = '
+  <div id="logout-modal" class="modal animate">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Log out</h4>
+        <span class="modal-close" title="Close Modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        Are you sure you would like to log out?
+      </div>
+      <div class="modal-footer">
+        <form method="post" action="'.find_asset("login/actions/logout.php").'">
+          <button class="btn" type="submit">Log out</button>
+        </form>
+        <button class="modal-close btn abort-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
   <div class="vflex-center secondary-color">
     <h1 class="logo">wildfire</h1>
     <div class="dropdown-wrapper">
@@ -24,11 +41,9 @@ $layout_content["content"] = '
                 '.($user ? "PROFILE" : "LOG IN").'
               </a>
             </div>
-            <div class="dropdown-option abort-link">
-              <a onclick="confirmLogout(\''.find_asset("login/actions/logout.php").'\')">
-                '.($user ? "LOG OUT" : "").'
-              </a>
-            </div>
+            '.($user ? '<div class="dropdown-option abort-link">
+              <a onclick="showModal(\'logout-modal\')">LOG OUT</a>
+            </div>' : '').'
           </div>
         </div><div class="hz-vt-spacer responsive"></div>
       </nav>
