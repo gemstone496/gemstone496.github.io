@@ -24,10 +24,24 @@
   justify-items: center;
   justify-self: center;
 }
-/* right/bottom aligns typically can too */
-.flex-right {
-  align-items: end;
-  align-content: end;
+.row.top {
+  align-content: start;
+  align-items: start;
+}
+/* right/left aligns */
+.row.flex-right, .rev-row.flex-left {
   justify-content: end;
   justify-items: end;
+}
+.col.flex-right {
+  align-items: end;
+  align-content: end;
+}
+.row.flex-left, .rev-row.flex-right {
+  justify-content: start;
+  justify-items: start;
+}
+.col.flex-left {
+  align-items: start;
+  align-content: start;
 }

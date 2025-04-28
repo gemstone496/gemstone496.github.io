@@ -81,7 +81,6 @@ function userNewUsername(val, loadMethod) {
   let request = new XMLHttpRequest();
   request.onload = function() { loadMethod(this.responseText); };
   request.timeout = 1000;
-  request.re
   request.open("GET", url);
   request.send();
 }
@@ -114,7 +113,7 @@ function validateNewUserField(method) {
   if (document.querySelector(`#${FORM_MODE_ID}`).value === "login") {
     return true;
   }
-  return method()
+  return method();
 }
 
 /**
@@ -129,7 +128,7 @@ function verifySubmit(e) {
   // just get out if the inputs are invalid
   e.preventDefault(); // this is the fucked up part
   let username = userValid(false);
-  let pswCheck = true //pswValid();
+  let pswCheck = pswValid();
   let pswMatch = pswsMatch();
   if (!username || !pswCheck || !pswMatch) {
     return false;

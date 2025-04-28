@@ -14,10 +14,12 @@ $layout_content["content"] = generate_modal("log-out").'
         <a class="nav responsive" href="'.find_asset("about.html.php").'">ABOUT</a>
         <a class="nav responsive" href="'.find_asset("comic/archive.html.php").'">ARCHIVE</a>
         <div id="profile-dropdown" class="dropdown responsive col flex-right">
-          <a class="dropdown-reveal" href="'.(find_asset($user ? "login/profile.html.php" : "login/login.html.php")).'">
-            <img class="nav pfp-thumbnail" 
-              src="'.($user && fetch_pfp($user) ? '' : find_asset("images/pfp_default.png")).'">
-          </a>
+          <div class="nav dropdown-reveal">
+            <a href="'.(find_asset($user ? "login/profile.html.php" : "login/login.html.php")).'">
+              <img class="pfp thumbnail" 
+                src="'.($user && fetch_pfp($user) ? '' : find_asset("images/pfp_default.png")).'">
+            </a>
+          </div>
           <div class="dropdown-content">
             <div class="dropdown-option flex-right">
               <a class="off-frgd" href="'.($user ? find_asset("login/profile.html.php") : find_asset("login/login.html.php")).'">

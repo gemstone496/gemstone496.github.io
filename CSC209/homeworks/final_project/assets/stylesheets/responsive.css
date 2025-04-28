@@ -1,3 +1,8 @@
+/* hidden objects */
+.hidden {
+  display: none;
+}
+
 /* responsive layout (menu turns into hide/show on small screens) */
 @media (max-width: 600px) {
   /* settings for nav bar */

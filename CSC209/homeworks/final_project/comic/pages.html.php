@@ -39,12 +39,11 @@ $content_for["content"] = '
   '.$page_ctrl.'
   <div class="page-post">
     '.$content_for["post"].'
-  </div>'.
-  (isset($content_for["comments"]) ? '
+  </div>
   <div class="page-comments">
-    <h2>Comments</h2>
-    '.$content_for["comments"].'
-  </div>' : '').'
+    <h3>Comments</h3>
+    '.($content_for["comments"] ?? '<p>Comments coming soon...</p>').'
+  </div>
 </div>';
 ?>
 

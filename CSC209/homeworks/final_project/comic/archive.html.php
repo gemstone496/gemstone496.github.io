@@ -29,7 +29,8 @@ $content_for["content"] .= '
 <div class="lr-pad marks">';
 
 for ($i = 0; $i < count($pages); $i++) {
-  $content_for["content"] .= '
+  if (count($pages[$i]) > 0) {
+    $content_for["content"] .= '
   <div class="storyline-mark row">
     <div class="storyline-thumbnail">
       <a href="./pages.html.php?ch='.$i.'&pg=0">
@@ -37,9 +38,10 @@ for ($i = 0; $i < count($pages); $i++) {
       </a>
     </div>
     <div class="storyline-header">
-      <a href="./pages.html.php?ch='.$i.'&pg=0">'.strip_filename($chapters[$i]).'</a>
+      <a href="./pages.html.php?ch='.$i.'&pg=0">'.$i.'. '.strip_filename($chapters[$i]).'</a>
     </div>
   </div>';
+  }
 }
 
 $content_for['content'] .= '

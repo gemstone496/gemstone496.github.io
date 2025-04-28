@@ -8,10 +8,12 @@
 }
 
 /* style the profile icon */
-.pfp-thumbnail {
+.pfp {
+  border: 2px solid var(--secondary-color);
   border-radius: 50%;
+}
+.pfp.thumbnail {
   max-width: 25px;
-  opacity: 0.75;
 }
 
 /* copyright settings */

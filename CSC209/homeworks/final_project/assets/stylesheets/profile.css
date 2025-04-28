@@ -1,0 +1,13 @@
+.btn {
+  max-width: fit-content;
+}
+.btn.full-width {
+  max-width: 100%;
+}
+.pfp.enlarged {
+  border: 5px solid var(--secondary-color);
+  max-width: 150px;
+}
+.verifier {
+  color: var(--abort-color);
+}

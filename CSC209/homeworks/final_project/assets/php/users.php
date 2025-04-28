@@ -2,6 +2,34 @@
 include_once "helpers.php";
 
 /**
+ * generates a header for user profile pages (profile and admin)
+ * @param string $user
+ * @return string
+ */
+function generate_profile_header(string $user): string {
+  $printout = '
+<div class="col full-width">
+  <h2 class="row center">Welcome, '.$user.' (ADMIN)</h2>
+  <div class="row center top mb-3">
+    <img class="pfp enlarged" src="'.(fetch_pfp($user) ? '' : find_asset("images/pfp_default.png")).'">
+    <a class="hover-underline lr-pad" onclick="toggleObjectHidden(\'pfp-form-wrapper\')">Edit</a>
+  </div>
+  <div id="pfp-form-wrapper" class="row center border white hidden tb-pad mb-3">
+    <form id="pfp-upload-form" class="col center" method="post" enctype="multipart/form-data"
+          onsubmit="verifySubmit(event, \'pfp-upload-form\')" action="./actions/upload_pfp.php">
+      <input name="MAX_FILE_SIZE" type="hidden" value="7500000">
+      <input id="pfp-upload" name="pfp-upload" type="file" onchange=validateInputField(\'pfp-upload\')>
+      <div class="row center">
+        <button class="btn" type="submit">Upload</button>
+        <button class="btn abort-btn" onclick="removePfp(\''.$user.'\')">Remove profile picture</button>
+      </div>
+    </form>
+  </div>
+</div>';
+  return $printout;
+}
+
+/**
  * is the specified user an admin?
  * @param string $uname username to look up
  * @return bool Y/N is uname in the set of admins

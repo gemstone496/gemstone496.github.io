@@ -32,6 +32,10 @@ body::-webkit-scrollbar {
 }
 
 /* misc useful classes */
+.border {
+  border: 5px solid var(--secondary-color);
+  border-radius: 10px;
+}
 .full-width {
   width: 100%;
 }
@@ -59,6 +63,9 @@ body::-webkit-scrollbar {
 .secondary-color {
   background-color: var(--secondary-color);
   color: var(--bkgd-color);
+}
+.white {
+  background-color: white;
 }
 
 /* global content settings for all pages */
@@ -111,11 +118,15 @@ a {
 a:hover {
   color: var(--secondary-color);
 }
+a.hover-underline:hover {
+  text-decoration: underline;
+}
 a.disabled {
   cursor: default;
 }
 a.disabled:hover {
   color: var(--theme-color);
+  text-decoration: none;
 }
 /* nav links*/
 a.nav:hover {

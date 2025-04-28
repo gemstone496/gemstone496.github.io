@@ -1,44 +1,8 @@
 /**
- * Shows a designated modal onscreen
- * @param {string} id the modal id to select to show
+ * shows or hides an object using classList.toggle
+ * @param {string} id the id of the object to show/hide
+ * @returns true if object was hidden, false if object was shown
  */
-function showModal(id) {
-  let modal = document.querySelector(`#${id}`);
-  modal.classList.add("show");  // Get the popup
-
-  // activate first pop up
-  let activated = modal.dataset.activated ?? false;
-  if (!activated) {
-    modal.dataset.activated = true;
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.classList.remove("show");
-      }
-    }
-
-    hideBtns = document.getElementsByClassName("modal-close");
-    for (const button of hideBtns) {
-      button.onclick = function() {
-        modal.classList.remove("show");
-      }
-    }
-  }
-}
-
-/**
- * hides or shows the responsive menu items on small screens
- * @param {HTMLElement} element the item clicked to call this
- */
-function openMenu(element) {
-  let responsives, response;
-  responsives = document.getElementsByClassName("responsive");
-  if (responsives.length > 0) {
-    response = responsives[0].style.display === "block" ? "none" : "block";
-  }
-  for (let responsive of responsives) {
-    responsive.style.display = response;
-  }
-  
-  response === "none" ? element.classList.remove("hidden") : element.classList.add("hidden"); // continue showing the menu
+function toggleObjectHidden(id) {
+  return document.querySelector(`#${id}`).classList.toggle("hidden");
 }
