@@ -18,10 +18,10 @@ $content_for["content"] = '
         <form id="login-form" method="post"
               onsubmit="verifySubmit(event)"
               action="./actions/verify_login.php">
-          <div class="txt-center">
+          <div class="col txt center">
             <h1 class="logo">wildfire</h1>
           </div>
-          <div class="txt-center">
+          <div class="col txt center">
             <h3 id="form-title" class="form-title">
               Log into your account
             </h3>
@@ -29,57 +29,57 @@ $content_for["content"] = '
 
           <input id="form-mode" name="mode" type="hidden" value="login">
 
-          <div class="full-span">
+          <div class="col full-width">
             <div class="form-label">
               <label for="uname">Username:</label>
               <span id="uname-verifier" 
                     class="verifier"></span>
             </div>
             <input id="uname" name="uname" 
-                    class="form-item" type="text" 
+                    class="mb-1 form-item" type="text" 
                     placeholder="Enter Username" 
                     oninput="validateNewUserField(userValid)" 
                     required>
           </div>
 
-          <div class="full-span">
+          <div class="col full-width">
             <div class="form-label">
               <label for="psw">Password:</label>
               <span id="psw-verifier"
                     class="verifier"></span>
             </div>
             <input id="psw" name="psw" 
-                   class="form-item" type="password" 
+                   class="mb-1 form-item" type="password" 
                    placeholder="Enter Password" 
                    onchange="validateNewUserField(pswValid)" 
                    required>
           </div>
 
-          <div class="full-span signup-only">
+          <div class="col full-width signup-only">
             <div class="form-label">
               <label for="psw-chk">Confirm Password:</label>
               <span id="psw-chk-verifier" 
                     class="verifier"></span>
             </div>
             <input id="psw-chk" name="psw-chk"
-                   class="form-item" type="password"
+                   class="mb-1 form-item" type="password"
                    placeholder="Confirm Password"
                    onchange="validateNewUserField(pswsMatch)">
           </div>
 
-          <div class="full-span">
-            <button id="submit-btn" class="login btn" 
+          <div class="col full-width">
+            <button id="submit-btn" class="mb-1 login btn" 
                     type="submit">Log in</button>
           </div>
         </form>
         
-        <form id="cancel" action="../comic/pages.html.php">
-          <div class="full-span">
-            <button id="cancel-btn" class="btn abort-btn"
+        <form id="cancel" class="mb-1" action="../comic/pages.html.php">
+          <div class="col full-width">
+            <button id="cancel-btn" class="mb-1 btn abort-btn"
                     type="submit">Cancel</button>
           </div>
         </form>
-        <span class="txt-center space-above full-span">
+        <span class="col txt center full-width">
           <div><span id="swap-mode">Don\'t have an account?</span>
             <a onclick="loginModeSwap(this)">Sign up</a>
           </div>

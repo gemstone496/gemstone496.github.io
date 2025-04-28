@@ -1,17 +1,3 @@
-/* comic-page-only content settings */
-#content {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-self: center;
-  padding: 0px 15px;
-}
-
-.page-control {
-  padding: 15px 0px;
-}
-
 .page-img img {
   max-width: 600px;
   min-width: 300px;

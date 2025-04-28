@@ -31,6 +31,29 @@ function find_asset(string $dirname = "assets"): string {
   return $wcd;
 }
 
+function generate_modal(string $action) : string {
+  $action_page = preg_replace("/[_-]/","", $action);
+  $printout = '
+  <div id="'.$action_page.'-modal" class="modal center animate">
+    <div class="col modal-content">
+      <div class="row modal-header">
+        <h4 class="modal-title">'.strip_filename($action).'</h4>
+        <span class="modal-close" title="Close Modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        Are you sure you would like to '.strip_filename($action, false).'?
+      </div>
+      <div class="rev-row flex-right modal-footer">
+        <form method="post" action="'.find_asset("login/actions/$action_page.php").'">
+          <button class="btn" type="submit">'.strip_filename($action).'</button>
+        </form>
+        <button class="modal-close btn abort-btn">Cancel</button>
+      </div>
+    </div>
+  </div>';
+  return $printout;
+}
+
 /**
  * @param array $specials specialized stylesheets to import. DO NOT include `.css`, i will do that for you
  * @param string $dirname the directory name to search for (by default searches for `stylesheets`)
@@ -40,7 +63,7 @@ function find_asset(string $dirname = "assets"): string {
  */
 function import_stylesheets(array $specials,
                             string $dirname = "stylesheets", 
-                            array $defaults = ["global"],
+                            array $defaults = ["global", "flexbox"],
                             array $responsive = ["responsive"]): string {
   $printout = "";
   $stylesheets = find_asset($dirname);

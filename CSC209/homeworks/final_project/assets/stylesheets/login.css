@@ -34,10 +34,7 @@ body {
 }
 
 /* set form text content */
-.txt-center {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+.txt {
   margin: 0;
   line-height: 10pt;
   padding: 0;
@@ -52,16 +49,10 @@ body {
 }
 
 /* control form input fields */
-.full-span {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 .form-item {
   border: 2px solid var(--off-frgd);
   border-radius: 5px;
   font-size: 10pt;
-  margin-bottom: 10px;
   padding: 5px;
 }
 
@@ -69,11 +60,5 @@ body {
 .btn {
   font-size: 10pt;
   font-weight: 100;
-  margin-bottom: 10px;
   width: 100%;
-}
-
-/* this is stupid don't ask questions */
-.space-above {
-  margin-top: 10px;
 }

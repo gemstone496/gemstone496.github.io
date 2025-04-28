@@ -12,8 +12,8 @@ $content_for["content"] = '
 <h2>Latest Page</h2>
 <p>Check out the latest page <a href="./pages.html.php">here</a>!</p>
 <h2>Archive</h2>
-<p>Select a page from the dropdown to start reading.</p>
-<select id="archive-select" onchange="setPage(this.value)">
+<p><label for=archive-select>Select a page from the dropdown to start reading.</label></p>
+<select id="archive-select" class="mb-3" onchange="setPage(this.value)">
   <option value="">Select page...</option>';
 
 for ($i = 0; $i < count($pages); $i++) {
@@ -26,11 +26,11 @@ for ($i = 0; $i < count($pages); $i++) {
 $content_for["content"] .= '
 </select>
 <h2>Chapters</h2><hr>
-<div class="marks">';
+<div class="lr-pad marks">';
 
 for ($i = 0; $i < count($pages); $i++) {
   $content_for["content"] .= '
-  <div class="storyline-mark">
+  <div class="storyline-mark row">
     <div class="storyline-thumbnail">
       <a href="./pages.html.php?ch='.$i.'&pg=0">
         <img src="'.($pages[$i][0]).'" alt="'.strip_filename($pages[$i][0]).'">

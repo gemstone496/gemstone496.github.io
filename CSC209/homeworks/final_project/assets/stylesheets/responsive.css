@@ -2,7 +2,6 @@
 @media (max-width: 600px) {
   /* settings for nav bar */
   .menu {
-    -webkit-flex-direction: column;
     flex-direction: column;
   }
   .menu .hidden {

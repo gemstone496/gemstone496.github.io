@@ -1,0 +1,33 @@
+/* columns */
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* rows */
+.row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.rev-row {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* all the center alignments go together */
+.center {
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+/* right/bottom aligns typically can too */
+.flex-right {
+  align-items: end;
+  align-content: end;
+  justify-content: end;
+  justify-items: end;
+}

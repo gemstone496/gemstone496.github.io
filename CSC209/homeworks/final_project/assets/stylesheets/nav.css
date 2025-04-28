@@ -1,14 +1,8 @@
 /* style the navigation menu inside header and footers */
 .menu {
-  align-content: center;
-  align-items: center;
   background: var(--off-bkgd);
-  display: flex;
-  justify-content: center;
-  justify-items: center;
   margin: 10px;
   max-width: fit-content;
-  padding: 10px 0px;
 }
 .menu .hidden {
   display: none;
@@ -22,10 +16,6 @@
 
 /* style the hover-dropdown on pfp */
 .dropdown {
-  align-content: flex-end;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
   position: relative;
 }
 .dropdown-content {

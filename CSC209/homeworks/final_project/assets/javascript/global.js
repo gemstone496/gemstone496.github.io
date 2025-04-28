@@ -9,7 +9,6 @@ function showModal(id) {
   // activate first pop up
   let activated = modal.dataset.activated ?? false;
   if (!activated) {
-    console.log("activating")
     modal.dataset.activated = true;
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {

@@ -7,3 +7,4 @@ https://stackoverflow.com/questions/34349543/how-to-save-value-in-session-in-php
 https://www.w3schools.com/howto/howto_css_dropdown.asp --- hover dropdown
 https://stackoverflow.com/questions/27583937/how-can-i-make-a-css-glass-blur-effect-work-for-an-overlay --- blur modal background
 https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp --- scrollbar
+https://www.geeksforgeeks.org/how-to-add-file-uploads-function-to-a-webpage-in-html/ --- file input type
