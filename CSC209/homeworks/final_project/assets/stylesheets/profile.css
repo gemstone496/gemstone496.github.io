@@ -1,3 +1,13 @@
+/* ok a bunch of this is hard stolen from login, i should pull those out but we'll see if i have time */
+input {
+  background-color: var(--bkgd-color);
+  border: 2px solid var(--off-frgd);
+  border-radius: 5px;
+}
+.little-txt {
+  font-size: 8pt;
+  font-weight: 100;
+}
 .btn {
   max-width: fit-content;
 }
@@ -6,7 +16,9 @@
 }
 .pfp.enlarged {
   border: 5px solid var(--secondary-color);
-  max-width: 150px;
+  height: 150px;
+  object-fit: cover;
+  width: 150px;
 }
 .verifier {
   color: var(--abort-color);

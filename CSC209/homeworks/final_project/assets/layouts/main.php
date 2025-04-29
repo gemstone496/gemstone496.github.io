@@ -16,8 +16,8 @@ $layout_content["content"] = generate_modal("log-out").'
         <div id="profile-dropdown" class="dropdown responsive col flex-right">
           <div class="nav dropdown-reveal">
             <a href="'.(find_asset($user ? "login/profile.html.php" : "login/login.html.php")).'">
-              <img class="pfp thumbnail" 
-                src="'.($user && fetch_pfp($user) ? '' : find_asset("images/pfp_default.png")).'">
+              <img class="pfp user thumbnail" 
+                src="'.($user && fetch_pfp($user) ? fetch_pfp($user) : find_asset("images/pfp_default.png")).'">
             </a>
           </div>
           <div class="dropdown-content">

@@ -1,4 +1,10 @@
 <?php
+/**
+ * takes a number and a string and interprets them into the format for new page uploads: xx_title_words
+ * @param int $number number to interpolate
+ * @param string $title raw title to interpolate
+ * @return string the correct formatted title
+ */
 function interpolate_title(int $number, string $title): string {
   return normalize_int($number).'_' .
     str_replace(' ','_', strtolower($title));

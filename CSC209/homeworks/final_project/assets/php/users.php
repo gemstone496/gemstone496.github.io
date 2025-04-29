@@ -2,26 +2,40 @@
 include_once "helpers.php";
 
 /**
+ * fetches a user's pfp and returns its src path for embedding
+ * @param string $username the username to check for a pfp
+ * @return null
+ */
+function fetch_pfp(string $username): string | null {
+  $user_dir = find_asset("data/users/$username");
+  $pfp = glob($user_dir."_pfp_*");
+  return $pfp[0] ?? null;
+}
+
+/**
  * generates a header for user profile pages (profile and admin)
- * @param string $user
- * @return string
+ * @param string $user the user to check for pfps and admin with
+ * @return string the profile header string
  */
 function generate_profile_header(string $user): string {
   $printout = '
 <div class="col full-width">
-  <h2 class="row center">Welcome, '.$user.' (ADMIN)</h2>
+  <h2 class="row center">Welcome, '.$user.(is_admin($user) ? ' ADMIN' : '').'</h2>
   <div class="row center top mb-3">
-    <img class="pfp enlarged" src="'.(fetch_pfp($user) ? '' : find_asset("images/pfp_default.png")).'">
+    <img class="pfp user enlarged" src="'.(fetch_pfp($user) ?? find_asset("images/pfp_default.png")).'">
     <a class="hover-underline lr-pad" onclick="toggleObjectHidden(\'pfp-form-wrapper\')">Edit</a>
   </div>
   <div id="pfp-form-wrapper" class="row center border white hidden tb-pad mb-3">
     <form id="pfp-upload-form" class="col center" method="post" enctype="multipart/form-data"
           onsubmit="verifySubmit(event, \'pfp-upload-form\')" action="./actions/upload_pfp.php">
-      <input name="MAX_FILE_SIZE" type="hidden" value="7500000">
-      <input id="pfp-upload" name="pfp-upload" type="file" onchange=validateInputField(\'pfp-upload\')>
+      <input name="MAX_FILE_SIZE" type="hidden" value="1000000">
+      <div class="hz-vt-spacer">
+      <label for="pfp-upload" class="row center little-txt"><span id="pfp-upload-verifier" class="verifier lr-pad"></span></label>
+      <input id="pfp-upload" name="pfp-upload" class="row center" type="file" onchange=validateInputField(\'pfp-upload\')>
+      <div class="hz-vt-spacer">
       <div class="row center">
         <button class="btn" type="submit">Upload</button>
-        <button class="btn abort-btn" onclick="removePfp(\''.$user.'\')">Remove profile picture</button>
+        <button class="btn abort-btn" onclick="removePfp(\''.find_asset("images/pfp_default.png").'\')">Remove profile picture</button>
       </div>
     </form>
   </div>

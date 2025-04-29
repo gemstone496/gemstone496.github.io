@@ -76,13 +76,7 @@ function unameThrowError(response) {
  * @param {(response: String) => void} loadMethod the method to run 
  */
 function userNewUsername(val, loadMethod) {
-  let url = new URL(UNAME_TAKEN_URL, window.location.href);
-  url.searchParams.append("uname", val);
-  let request = new XMLHttpRequest();
-  request.onload = function() { loadMethod(this.responseText); };
-  request.timeout = 1000;
-  request.open("GET", url);
-  request.send();
+  ajaxRequest(url, loadMethod, ["uname", val]);
 }
 
 /**

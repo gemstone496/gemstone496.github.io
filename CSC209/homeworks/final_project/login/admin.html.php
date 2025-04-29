@@ -25,7 +25,6 @@ $content_for["content"] = generate_profile_header($user).'
     <form id="page-upload-form" class="full-width" method="post" enctype="multipart/form-data"
           onsubmit="verifySubmit(event, \'page-upload-form\')" action="./actions/add_page.php">
       <div id="upload-wrapper" class="col lr-pad">
-        <input name="MAX_FILE_SIZE" type="hidden" value="7500000">
         <div id="ch-select-wrapper" class="col flex-left mb-1 lr-pad">
           <label for="ch-select" class="mb-1">
             Select chapter: <span id="ch-select-verifier" class="verifier"></span></label>

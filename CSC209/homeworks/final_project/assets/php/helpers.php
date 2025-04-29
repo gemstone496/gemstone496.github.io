@@ -1,10 +1,6 @@
 <?php
 declare(strict_types= 1);
 
-function fetch_pfp(string $username): string {
-  return "";
-}
-
 /**
  * finds the asset and returns the pathname to the specified file or directory
  * @param string $dirname the name of the directory in assets to search for

@@ -1,8 +1,18 @@
+const REMOVE_PFP_URL = "./actions/remove_pfp.php";
+
 /**
- * TODO IMPLEMENT
- * @param {string} username the username of the user to remove
+ * uses an ajax request to remove the user's pfp
  */
-function removePfp(username) {
+function removePfp(defaultImgPath) {
+  ajaxRequest(REMOVE_PFP_URL, updatePfp);
+  let pfps = document.querySelectorAll("img.pfp.user");
+  for (const pfp of pfps) {
+    pfp.src = defaultImgPath; // update this while ajax runs
+  }
+}
+
+function updatePfp(response) {
+  document.querySelector("pfp-verified").textContent = response;
 }
 
 /**

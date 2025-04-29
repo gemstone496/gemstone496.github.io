@@ -13,7 +13,9 @@
   border-radius: 50%;
 }
 .pfp.thumbnail {
-  max-width: 25px;
+  height: 25px;
+  object-fit: cover;
+  width: 25px;
 }
 
 /* copyright settings */
