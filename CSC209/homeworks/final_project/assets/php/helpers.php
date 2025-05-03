@@ -27,10 +27,10 @@ function find_asset(string $dirname = "assets"): string {
   return $wcd;
 }
 
-function generate_modal(string $action) : string {
-  $action_page = preg_replace("/[_-]/","", $action);
+function generate_modal(string $action, bool $admin_deletion=false) : string {
+  $action_page = preg_replace("/[-]/","_", $action);
   $printout = '
-  <div id="'.$action_page.'-modal" class="modal center animate">
+  <div id="'.$action.'-modal" class="modal center animate">
     <div class="col modal-content">
       <div class="row modal-header">
         <h4 class="modal-title">'.strip_filename($action).'</h4>
@@ -39,11 +39,15 @@ function generate_modal(string $action) : string {
       <div class="modal-body">
         Are you sure you would like to '.strip_filename($action, false).'?
       </div>
-      <div class="rev-row flex-right modal-footer">
-        <form method="post" action="'.find_asset("login/actions/$action_page.php").'">
-          <button class="btn" type="submit">'.strip_filename($action).'</button>
-        </form>
-        <button class="modal-close btn abort-btn">Cancel</button>
+      <div class="modal-footer">
+        <div class="rev-row flex-right right-self">
+          '.($admin_deletion ? '
+          <button class="btn abort-btn" onclick="adminDeleteAccount(\''.$action.'-modal\')">'.strip_filename($action).'</button>' : '
+          <form method="post" action="'.find_asset("login/actions/$action_page.php").'">
+            <button class="btn abort-btn" type="submit">'.strip_filename($action).'</button>
+          </form>').'
+          <button class="modal-close btn">Cancel</button>
+        </div>
       </div>
     </div>
   </div>';

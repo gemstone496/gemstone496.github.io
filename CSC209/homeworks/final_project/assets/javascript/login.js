@@ -76,7 +76,7 @@ function unameThrowError(response) {
  * @param {(response: String) => void} loadMethod the method to run 
  */
 function userNewUsername(val, loadMethod) {
-  ajaxRequest(url, loadMethod, ["uname", val]);
+  ajaxRequest(UNAME_TAKEN_URL, loadMethod, ["uname", val]);
 }
 
 /**

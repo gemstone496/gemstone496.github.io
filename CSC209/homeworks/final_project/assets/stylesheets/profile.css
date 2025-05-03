@@ -23,3 +23,6 @@ input {
 .verifier {
   color: var(--abort-color);
 }
+.verified {
+  color: var(--verify-color);
+}

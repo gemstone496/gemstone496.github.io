@@ -12,7 +12,8 @@ function removePfp(defaultImgPath) {
 }
 
 function updatePfp(response) {
-  document.querySelector("pfp-verified").textContent = response;
+  document.querySelector("#pfp-verified").textContent = response;
+  document.querySelector("#pfp-upload-verifier").textContent = "";
 }
 
 /**

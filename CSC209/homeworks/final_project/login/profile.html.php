@@ -16,7 +16,7 @@ if (!isset($_SESSION["user"])) {
 $user = $_SESSION["user"];
 
 $content_for["assets"] = ["profile"];
-$content_for["content"] = generate_profile_header($user);
+$content_for["content"] = generate_profile_header($user).'';
 ?>
 
 <?= render_layout("main", $content_for);

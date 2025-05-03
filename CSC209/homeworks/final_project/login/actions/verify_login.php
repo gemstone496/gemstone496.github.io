@@ -18,14 +18,14 @@ if ($_POST["mode"] === "signup") {
       fwrite($fp, json_encode($new_user));
       fclose($fp);
         
-      $location = "../../comic/pages.html.php";
+      $location = "../profile.html.php";
       $new_sesh = true;
     }
   }
 } else if ($_POST["mode"] === "login") {
   if (validate_login($uname, $psw)) {
     $new_sesh = true;
-    $location = is_admin($uname) ? "../admin.html.php" : "../../comic/pages.html.php";
+    $location = is_admin($uname) ? "../admin.html.php" : "../profile.html.php";
   }
 }
 

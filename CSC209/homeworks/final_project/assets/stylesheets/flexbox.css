@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
 }
+.rev-col {
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 /* rows */
 .row {
@@ -24,24 +28,37 @@
   justify-items: center;
   justify-self: center;
 }
+.right-self { /* also top-aligns */
+  align-self: end;
+  justify-self: end;
+}
+.center-self { /* veritcal and horizontal */
+  align-self: center;
+  justify-self: center;
+}
+
+/* alignments for col flexboxes */
+.col.flex-right, .rev-col.flex-left {
+  align-items: end;
+  align-content: end;
+}
+.col.flex-left, .rev-col.flex-right {
+  align-items: start;
+  align-content: start;
+}
+/* alignments for row flexboxes */
 .row.top {
   align-content: start;
   align-items: start;
 }
-/* right/left aligns */
 .row.flex-right, .rev-row.flex-left {
   justify-content: end;
   justify-items: end;
-}
-.col.flex-right {
-  align-items: end;
-  align-content: end;
 }
 .row.flex-left, .rev-row.flex-right {
   justify-content: start;
   justify-items: start;
 }
-.col.flex-left {
-  align-items: start;
-  align-content: start;
+.row.stretch {
+  align-items: stretch;
 }

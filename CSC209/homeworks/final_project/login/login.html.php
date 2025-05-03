@@ -51,7 +51,7 @@ $content_for["content"] = '
             <input id="psw" name="psw" 
                    class="mb-1 form-item" type="password" 
                    placeholder="Enter Password" 
-                   onchange="validateNewUserField(pswValid)" 
+                   oninput="validateNewUserField(pswValid)" 
                    required>
           </div>
 

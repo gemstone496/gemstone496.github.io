@@ -4,6 +4,7 @@
   --secondary-color: #66444a; /* secondary theme color */
   --highligher-color: #ff9b9ba0; /* highlighter color */
   --abort-color: #9f4646; /* abort red color */
+  --verify-color: #445a36; /* verify green color */
 
   --frgd-color: #101010; /* base foreground */
   --off-frgd: #444444;
@@ -35,6 +36,12 @@ body::-webkit-scrollbar {
 .border {
   border: 5px solid var(--secondary-color);
   border-radius: 10px;
+}
+.half-width {
+  width: 50%;
+}
+.fit { /* fit-content */
+  width: fit-content;
 }
 .full-width {
   width: 100%;
@@ -97,6 +104,10 @@ body::-webkit-scrollbar {
 .btn:enabled:hover {
   background-color: var(--bkgd-color);
   color: var(--off-frgd);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 /* anything that closes a popup or aborts an action */
 .abort-btn {

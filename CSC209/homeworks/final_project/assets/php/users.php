@@ -18,9 +18,10 @@ function fetch_pfp(string $username): string | null {
  * @return string the profile header string
  */
 function generate_profile_header(string $user): string {
-  $printout = '
+  $admin = is_admin($user);
+  $printout = generate_modal("delete-account", $admin).'
 <div class="col full-width">
-  <h2 class="row center">Welcome, '.$user.(is_admin($user) ? ' ADMIN' : '').'</h2>
+  <h2 class="row center">Welcome, '.$user.($admin ? ' ADMIN' : '').'</h2>
   <div class="row center top mb-3">
     <img class="pfp user enlarged" src="'.(fetch_pfp($user) ?? find_asset("images/pfp_default.png")).'">
     <a class="hover-underline lr-pad" onclick="toggleObjectHidden(\'pfp-form-wrapper\')">Edit</a>
@@ -29,15 +30,28 @@ function generate_profile_header(string $user): string {
     <form id="pfp-upload-form" class="col center" method="post" enctype="multipart/form-data"
           onsubmit="verifySubmit(event, \'pfp-upload-form\')" action="./actions/upload_pfp.php">
       <input name="MAX_FILE_SIZE" type="hidden" value="1000000">
-      <div class="hz-vt-spacer">
+      <div class="hz-vt-spacer"></div>
       <label for="pfp-upload" class="row center little-txt"><span id="pfp-upload-verifier" class="verifier lr-pad"></span></label>
       <input id="pfp-upload" name="pfp-upload" class="row center" type="file" onchange=validateInputField(\'pfp-upload\')>
-      <div class="hz-vt-spacer">
+      <div class="hz-vt-spacer"></div>
+      <div id="pfp-verified" class="little-txt center verified lr-pad"></div>
       <div class="row center">
         <button class="btn" type="submit">Upload</button>
         <button class="btn abort-btn" onclick="removePfp(\''.find_asset("images/pfp_default.png").'\')">Remove profile picture</button>
       </div>
     </form>
+  </div>
+  
+  <div class="col center-self lr-pad tb-pad half-width border white">
+    <div class="row flex-left lr-pad tb-pad">
+      <input id="tracer-switch" type="checkbox"> <label for="tracer-switch">Enable cursor tracing?</label>
+    </div>
+    <div class="col flex-right right-self lr-pad fit">
+      <button class="full-width btn abort-btn" onclick="showModal(\'log-out-modal\')">Log out</button>
+      <button class="full-width btn abort-btn" onclick="showModal(\'delete-account-modal\')'.'"'.(
+        $admin ? ' disabled' : ''
+      ).'>Delete account</button>
+    </div>
   </div>
 </div>';
   return $printout;

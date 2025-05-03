@@ -11,3 +11,4 @@ https://www.geeksforgeeks.org/how-to-add-file-uploads-function-to-a-webpage-in-h
 https://www.php.net/manual/en/features.file-upload.php --- php docs on uploading files
 https://www.w3schools.com/php/php_file_upload.asp --- more uploading files
 https://www.geeksforgeeks.org/how-to-check-the-type-and-size-before-file-uploading-in-php/ --- even. more. uploading. files. (i stg when i am done with this i am going to be so thrilled)
+https://www.w3schools.com/howto/howto_css_switch.asp <-- toggle switch

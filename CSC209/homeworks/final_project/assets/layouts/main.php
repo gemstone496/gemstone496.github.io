@@ -1,5 +1,9 @@
-<?php 
-session_start();
+<?php
+include_once find_asset("php/users.php");
+
+if (!session_id()) {
+  session_start();
+}
 $user = $_SESSION["user"] ?? "";
 
 $layout_content["assets"] = array_merge(["main", "modal", "nav"], $content["assets"] ?? []);
@@ -27,7 +31,7 @@ $layout_content["content"] = generate_modal("log-out").'
               </a>
             </div>
             '.($user ? '<div class="dropdown-option flex-right abort-link">
-              <a onclick="showModal(\'logout-modal\')">LOG OUT</a>
+              <a onclick="showModal(\'log-out-modal\')">LOG OUT</a>
             </div>' : '').'
           </div>
         </div><div class="hz-vt-spacer responsive"></div>

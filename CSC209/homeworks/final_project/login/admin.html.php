@@ -1,12 +1,15 @@
 <?php 
 include_once "../assets/php/helpers.php";
+include_once "../assets/php/admin.php";
 include_once "../assets/php/comic.php";
 include_once "../assets/php/users.php";
 
 # never allow non-admins in here
-session_start();
+if (!session_id()) {
+  session_start();
+}
 if (!isset($_SESSION["user"])) {
-  header("Location: ../../comic/pages.html.php");
+  header("Location: ../comic/pages.html.php");
   die();
 }
 if (!is_admin($_SESSION["user"])) {
@@ -19,8 +22,8 @@ $chapters = glob(find_asset("images/pages")."*");
 
 $content_for["assets"] = ["admin", "profile"];
 $content_for["content"] = generate_profile_header($user).'
-<div class="row full-width tb-pad">
-  <div class="col center lr-pad tb-pad full-width border white">
+<div class="row full-width tb-pad stretch">
+  <div class="col center lr-pad tb-pad full-width border white" style="margin-right:15px;">
     <h2 class="row center mb-3">Upload new page</h2>
     <form id="page-upload-form" class="full-width" method="post" enctype="multipart/form-data"
           onsubmit="verifySubmit(event, \'page-upload-form\')" action="./actions/add_page.php">
@@ -64,8 +67,9 @@ $content_for["content"] = generate_profile_header($user).'
       </div>
     </form>
   </div>
-  <div class="col center lr-pad full-width">
-
+  <div class="col lr-pad tb-pad full-width border white" style="margin-left:15px;">
+    <h2 class="row center mb-3">Manage accounts</h2>
+    <div id="userlist" class="col flex-right fit" style="width:fit-content;">'.generate_user_list().'</div>
   </div>
 </div>';
 ?>
