@@ -20,7 +20,7 @@ function fetch_pfp(string $username): string | null {
 function generate_profile_header(string $user): string {
   $admin = is_admin($user);
   $printout = generate_modal("delete-account", $admin).'
-<div class="col full-width">
+<div class="col full-width mb-1">
   <h2 class="row center">Welcome, '.$user.($admin ? ' ADMIN' : '').'</h2>
   <div class="row center top mb-3">
     <img class="pfp user enlarged" src="'.(fetch_pfp($user) ?? find_asset("images/pfp_default.png")).'">
@@ -68,6 +68,16 @@ function is_admin(string $uname): bool {
   // stored in associative array for faster lookups.
   // the site has no built-in ways to change admins, they are fixed.
   return $admins && array_key_exists($uname, $admins);
+}
+
+/**
+ * decides whether to show the tracer
+ * @param string $uname user's name :)
+ * @return bool whether to show tracer for user (defaults false)
+ */
+function show_tracer(string $uname): bool {
+  $user_data = read_data(find_asset("data/users/$uname")."$uname.json");
+  return $user_data["trace"] === true;
 }
 
 /**

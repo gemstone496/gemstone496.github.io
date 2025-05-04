@@ -9,7 +9,7 @@ const ARH_LEN = 5; // arrowhead length
 const ARH_ANG = 3*Math.PI / 4;
 const FADE = '#ebe1ff33'
 const FPS = 40; // 40ms = 25fps
-var stage;
+var tracer;
 var particles = [];
 
 /**
@@ -18,15 +18,15 @@ var particles = [];
  */
 function toggleAnimation(button) {
   let mode = button.dataset.mode;
-  mode == 'start' ? stage.begin() : stage.stop();
+  mode == 'start' ? tracer.begin() : tracer.stop();
   button.textContent = mode == 'start' ? 'FREEZE' : 'Dance!';
   button.dataset.mode = mode == 'start' ? 'stop' : 'start';
 }
 function begin() {
-  stage.begin();
+  tracer.begin();
 }
 function freeze() {
-  stage.stop();
+  tracer.stop();
 }
 
 function updateParts() {
@@ -36,8 +36,8 @@ function updateParts() {
   while (count != particles.length) {
     if (count < particles.length) {
       particles.pop();
-      if (count == particles.length && stage.static) { // reset without purged particles
-        stage.clear();
+      if (count == particles.length && tracer.static) { // reset without purged particles
+        tracer.clear();
         for (let particle of particles) {
           particle.draw();
         }
@@ -55,8 +55,8 @@ function particleBuilder() {
   // randomizer
   let r, x, y, v, theta, orient, rgb, color, particle, count;
   r = RADIUS;
-  x = r + Math.floor(Math.random() * (stage.canvas.width -2*r +1)); // stay inside
-  y = r + Math.floor(Math.random() * (stage.canvas.height -2*r +1));
+  x = r + Math.floor(Math.random() * (tracer.canvas.width -2*r +1)); // stay inside
+  y = r + Math.floor(Math.random() * (tracer.canvas.height -2*r +1));
   v = MIN_VEL + Math.floor(Math.random() * RANGE_VEL); // velocity
   theta = Math.random() * 2*Math.PI;
   orient = Math.floor(Math.random() * 2) == 1 ? 1 : -1; // how to orient the arrowhead
@@ -96,7 +96,7 @@ function particleBuilder() {
 }
 
 function sceneSet() {
-  stage = {
+  tracer = {
     canvas : document.createElement('canvas'),
     interval : null,
     static : true,
@@ -130,20 +130,20 @@ function sceneSet() {
       }
     }
   }
-  stage.canvas.width = CVS_WID;
-  stage.canvas.height = CVS_HGT;
-  stage.context = stage.canvas.getContext('2d');
-  document.getElementById('animation-container').appendChild(stage.canvas);
-  stage.regenerate();
+  tracer.canvas.width = CVS_WID;
+  tracer.canvas.height = CVS_HGT;
+  tracer.context = tracer.canvas.getContext('2d');
+  document.getElementById('animation-container').appendChild(tracer.canvas);
+  tracer.regenerate();
 }
 
 function newFrame() {
   let trace = document.getElementById("trace").value;
   if (trace == 1) {
-    stage.context.fillStyle = FADE;
-    stage.context.fillRect(0, 0, stage.canvas.width, stage.canvas.height);
+    tracer.context.fillStyle = FADE;
+    tracer.context.fillRect(0, 0, tracer.canvas.width, tracer.canvas.height);
   } else if (trace == 0) {
-    stage.clear();
+    tracer.clear();
   }
 
   // increment
@@ -207,11 +207,11 @@ class Particle {
     this.init = [r, x, y, v, theta, orient, color];
     
     this.draw = function() {
-      stage.context.beginPath();
-      stage.context.strokeStyle = this.color;
-      stage.context.lineWidth = 2;
-      stage.context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
-      stage.context.stroke();
+      tracer.context.beginPath();
+      tracer.context.strokeStyle = this.color;
+      tracer.context.lineWidth = 2;
+      tracer.context.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+      tracer.context.stroke();
 
       let lineS = [this.x + this.r*Math.cos(this.theta), 
                   this.y + this.r*Math.sin(this.theta)];
@@ -219,13 +219,13 @@ class Particle {
                   lineS[1] + ARW_SCALAR*this.v*Math.sin(this.theta)];
       let arrowHead = [lineE[0] + ARH_LEN*Math.cos(this.theta +this.arwOrient*ARH_ANG),
                       lineE[1] + ARH_LEN*Math.sin(this.theta +this.arwOrient*ARH_ANG)];
-      stage.context.beginPath();
-      stage.context.strokeStyle = this.color;
-      stage.context.lineWidth = 1;
-      stage.context.moveTo(lineS[0], lineS[1]);
-      stage.context.lineTo(lineE[0], lineE[1]);
-      stage.context.lineTo(arrowHead[0], arrowHead[1]);
-      stage.context.stroke();
+      tracer.context.beginPath();
+      tracer.context.strokeStyle = this.color;
+      tracer.context.lineWidth = 1;
+      tracer.context.moveTo(lineS[0], lineS[1]);
+      tracer.context.lineTo(lineE[0], lineE[1]);
+      tracer.context.lineTo(arrowHead[0], arrowHead[1]);
+      tracer.context.stroke();
     }
 
     this.inc = function() {
@@ -241,15 +241,15 @@ class Particle {
       if (xNew <= this.r && Math.cos(this.theta) < 0) {
         xNew = this.r; // condense to bound
         this.theta = Math.PI - this.theta;
-      } else if (xNew >= stage.canvas.width -this.r && Math.cos(this.theta) > 0) {
-        xNew = stage.canvas.width - this.r;
+      } else if (xNew >= tracer.canvas.width -this.r && Math.cos(this.theta) > 0) {
+        xNew = tracer.canvas.width - this.r;
         this.theta = Math.PI - this.theta;
       } 
       if (yNew <= this.r && Math.sin(this.theta) < 0) {
         yNew = this.r;
         this.theta = -this.theta;
-      } else if (yNew >= stage.canvas.height -this.r) {
-        yNew = stage.canvas.height - this.r;
+      } else if (yNew >= tracer.canvas.height -this.r) {
+        yNew = tracer.canvas.height - this.r;
         this.theta = -this.theta;
       }
       return [xNew, yNew];

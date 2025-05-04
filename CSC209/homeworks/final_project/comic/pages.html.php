@@ -33,8 +33,8 @@ $page_ctrl = '<div class="tb-pad">
 $content_for["content"] = '
 <div class="col center lr-pad">
   '.$page_ctrl.'
-  <div class="page-img">
-    <img src="'.$imgpath.'" alt="'.strip_filename($imgpath).'">
+  <div class="row page-img">
+    <img id="page-img" src="'.$imgpath.'" alt="'.strip_filename($imgpath).'">
   </div>
   '.$page_ctrl.'
   <div class="page-post">

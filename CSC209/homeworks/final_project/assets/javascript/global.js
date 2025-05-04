@@ -17,6 +17,14 @@ function ajaxRequest(url, loadMethod, ...params) {
 }
 
 /**
+ * @param {String} style the style element of the dimension (including 'px')
+ * @returns {Number} the number of the dimension, w/o 'px'
+ */
+function dimension(style) {
+  return Number(style.replace(/px$/, ''));
+}
+
+/**
  * shows or hides an object using classList.toggle
  * @param {string} id the id of the object to show/hide
  * @returns true if object was hidden, false if object was shown

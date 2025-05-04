@@ -1,0 +1,15 @@
+:root {
+  --tracer-color:#aa5252; /* abort color */
+}
+
+.tracer {
+  background-color: var(--tracer-color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px 8px var(--tracer-color);
+  height: 18px;
+  opacity: 0;
+  width: 18px;
+  pointer-events: none;
+  z-index: 100;
+  position: fixed;
+}

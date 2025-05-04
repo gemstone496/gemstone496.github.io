@@ -28,7 +28,7 @@
   justify-items: center;
   justify-self: center;
 }
-.right-self { /* also top-aligns */
+.right-self { /* also bottom-aligns */
   align-self: end;
   justify-self: end;
 }
@@ -39,18 +39,14 @@
 
 /* alignments for col flexboxes */
 .col.flex-right, .rev-col.flex-left {
-  align-items: end;
   align-content: end;
+  align-items: end;
 }
-.col.flex-left, .rev-col.flex-right {
-  align-items: start;
+.col.flex-left, .rev-col.flex-right, .row.top {
   align-content: start;
+  align-items: start;
 }
 /* alignments for row flexboxes */
-.row.top {
-  align-content: start;
-  align-items: start;
-}
 .row.flex-right, .rev-row.flex-left {
   justify-content: end;
   justify-items: end;

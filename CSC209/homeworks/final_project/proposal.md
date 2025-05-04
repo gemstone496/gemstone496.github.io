@@ -11,7 +11,7 @@ Project plan: Create a webcomic hosting site that allows an artist to routinely 
 3. ~~User login and signup pages (integrate from wk9 hw).~~
 4. ~~Admin new page upload.~~
 5. ~~User pfp and~~ Page comments (single-layer)
-6. Cursor tracking
+6. ~~Cursor tracking~~
 ---
 7. ~~Cookies to preserve user sessions continuously through page navigation~~
 8. Button scaling, styling, theming. General QoL stuff.
@@ -33,9 +33,9 @@ Project plan: Create a webcomic hosting site that allows an artist to routinely 
 7. ~~Archive page generated based on uploaded pages for a fully updated archive of the entire site's pages~~
 8. ~~Session signins (cookies). Image file uploading (as opposed to simple read/writing). Hover dropdown for nav bar.~~
 9. ~~Implicit~~
-10. Considering having hover actions such as scaling up buttons when hovered over. Also considering a page turn on hover, and an accessibility feature where a colored transparent highlighter trails the cursor to help process text and focus vision (I find I am frequently desiring this feature when I visit sites. If I include it, there will be an option to disable it).
+10. ~~Considering having hover actions such as scaling up buttons when hovered over. Also considering a page turn on hover, and an accessibility feature where a colored transparent highlighter trails the cursor to help process text and focus vision (I find I am frequently desiring this feature when I visit sites. If I include it, there will be an option to disable it).~~
 11. ~~Signin and commenting both communicate with the server. Possible light/dark modes. Aforementioned default-hidden menu... likely more than one of those, but any would fill this requirement~~
-12.~~ One-student project. Requirement will be included in final submission.~~
+12. ~~One-student project. Requirement will be included in final submission.~~
 13. ~~Again, it will be or it will not. Requirement will be included in final submission.~~
 14. ~~Will do o7~~
 15. ~~What happens if I'm sick and unable to come into class? I am disabled and managed to lose my cane, so I might genuinely not be able to come all the way here, or possibly be unable to bring my computer...?~~

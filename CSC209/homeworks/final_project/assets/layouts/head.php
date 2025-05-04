@@ -7,7 +7,7 @@
   <?= import_stylesheets($content["assets"] ?? []) ?>
   <?= import_scripts($content["assets"] ?? []) ?>
 </head>
-<body>
+<body <?= array_search("tracer", $content["assets"] ?? []) ? 'onload="tracerLoad()"' : "" ?>>
   <?= $content["content"] ?? "" ?>
 </body>
 </html>

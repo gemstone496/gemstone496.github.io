@@ -1,16 +1,16 @@
 /* global styles for all pages */
 :root {
-  --theme-color: #815aae; /* theme color */
-  --secondary-color: #66444a; /* secondary theme color */
-  --highligher-color: #ff9b9ba0; /* highlighter color */
-  --abort-color: #9f4646; /* abort red color */
-  --verify-color: #445a36; /* verify green color */
+  --theme-color:#815aae; /* theme color */
+  --secondary-color:#66444a; /* secondary theme color */
+  --highligher-color:#ff9b9ba0; /* highlighter color */
+  --abort-color:#9f4646; /* abort red color */
+  --verify-color:#445a36; /* verify green color */
 
-  --frgd-color: #101010; /* base foreground */
-  --off-frgd: #444444;
-  --frgd-transparent: #101010aa;
-  --bkgd-color: #e0e0e3; /* base background */
-  --off-bkgd: #c7c7c7; /* off-color background */
+  --frgd-color:#101010; /* base foreground */
+  --off-frgd:#444444;
+  --frgd-transparent:#101010aa;
+  --bkgd-color:#e0e0e3; /* base background */
+  --off-bkgd:#c7c7c7; /* off-color background */
   
 }
 

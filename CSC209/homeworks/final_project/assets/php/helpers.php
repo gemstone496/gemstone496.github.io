@@ -30,7 +30,7 @@ function find_asset(string $dirname = "assets"): string {
 function generate_modal(string $action, bool $admin_deletion=false) : string {
   $action_page = preg_replace("/[-]/","_", $action);
   $printout = '
-  <div id="'.$action.'-modal" class="modal center animate">
+  <div id="'.$action.'-modal" class="col modal center top animate">
     <div class="col modal-content">
       <div class="row modal-header">
         <h4 class="modal-title">'.strip_filename($action).'</h4>

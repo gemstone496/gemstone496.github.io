@@ -6,9 +6,11 @@ if (!session_id()) {
 }
 $user = $_SESSION["user"] ?? "";
 
-$layout_content["assets"] = array_merge(["main", "modal", "nav"], $content["assets"] ?? []);
+$layout_content["assets"] = array_merge(["main", "modal", "nav"], show_tracer($user) ? ["tracer"] : [], $content["assets"] ?? []);
 
-$layout_content["content"] = generate_modal("log-out").'
+$layout_content["content"] = '
+  <div id="tracer" class="tracer"></div>
+  '.generate_modal("log-out").'
   <div class="col full-width center tb-pad secondary-color">
     <h1 class="logo">wildfire</h1>
     <div class="dropdown-wrapper">
